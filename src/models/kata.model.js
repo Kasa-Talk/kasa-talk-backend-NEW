@@ -21,4 +21,9 @@ const Kata = db.define("kata", {
   status: {
     type: Sequelize.DataTypes.ENUM,
   },
+}, {
+  freezeTableName: true,
+  timestamps: true,
 })
+
+module.exports = Kata;

@@ -2,7 +2,6 @@
 
 ### base url : `https://api.kasa-talk.com`
 
-
 ## User Endpoint
 
 ### - Register
@@ -171,13 +170,6 @@
   - `GET`
 - Header:
   - Authorization: Bearer - token
-- Request
-  - body request (it depend what you want to edit)
-  ```
-  {
-    
-  }
-  ```
 - Response
   ```
   { 
@@ -195,18 +187,13 @@
 ### - Search Kata Indonesia - Sasak
 
 - Path :
-  - `/kata/seacrh/indonesia/:kata`
+  - `/kata/indonesia?kata=`
 - Method:
   - `GET`
 - Header:
   - Authorization: Bearer - token
 - Request
-  - body request (it depend what you want to edit)
-  ```
-  {
-    "indonesia": "xxx",
-  }
-  ```
+  - query paramte (it depend what you want to edit)
 - Response
   ```
   { 
