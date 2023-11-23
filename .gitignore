@@ -1,0 +1,3 @@
+# ignore ALL files in  directory node modolues
+node_modules/
+.env
