@@ -1,40 +1,44 @@
 'use strict';
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Kata', {
+    await queryInterface.createTable('kata', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       indonesia: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       sasak: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       audioUrl: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       contohPenggunaan: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       status: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM,
+        allowNull: false,
+        values: ['active', 'inactive', 'pending'],
+        defaultValue: 'pending',
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Kata');
-  }
+  },
 };

@@ -18,10 +18,14 @@ module.exports = (sequelize, DataTypes) => {
     sasak: DataTypes.STRING,
     audioUrl: DataTypes.STRING,
     contohPenggunaan: DataTypes.STRING,
-    status: DataTypes.ENUM
+    status: {
+      type: DataTypes.ENUM('active', 'inactive', 'pending'),
+      allowNull: false,
+      defaultValue: 'pending',
+    },
   }, {
     sequelize,
-    modelName: 'Kata',
+    modelName: 'kata',
   });
   return Kata;
 };
