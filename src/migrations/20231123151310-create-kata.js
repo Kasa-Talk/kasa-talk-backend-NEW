@@ -12,15 +12,19 @@ module.exports = {
       },
       indonesia: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       sasak: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       audioUrl: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       contohPenggunaan: {
         type: Sequelize.STRING,
+        allowNull: false
       },
       status: {
         type: Sequelize.ENUM,
