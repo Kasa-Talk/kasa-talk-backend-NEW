@@ -1,4 +1,4 @@
-const {kata, user} = require('../models');
+const {kata} = require('../models');
 
 // function get
 const getAllKata = async (req, res) => {
