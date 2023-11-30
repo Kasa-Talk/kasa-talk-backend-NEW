@@ -12,6 +12,9 @@
         "ecmaVersion": "latest"
     },
     "rules": {
-        "no-console":"off"
+        "no-console":"off",
+        "strict":"warn",
+        "no-unused-vars":"warn",
+        "no-path-concat":"warn",
     }
 }
