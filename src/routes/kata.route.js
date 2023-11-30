@@ -3,12 +3,14 @@ const {
   getAllKata, 
   getKataById, 
   searchKataByIndonesia, 
-  searchKataBySasak 
+  searchKataBySasak,
+  addKata
 } = require('../controllers/kata.controller');
 
-route.get('/list', getAllKata);
+route.get('/', getAllKata);
 route.get('/:id', getKataById);
 route.get('/t/indonesia', searchKataByIndonesia);
 route.get('/t/sasak', searchKataBySasak);
+route.post('/', addKata)
 
 module.exports = route;

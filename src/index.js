@@ -3,6 +3,11 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
+// middleware untuk menghandle body json
+app.use(express.json())
+
+app.use(express.urlencoded({extended: true}))
+
 // routes
 const { Kataroute } = require('./routes/index');
 
