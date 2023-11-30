@@ -162,10 +162,10 @@
   }
   ```
 
-### - List Kata
+### - List All Kata
 
 - Path :
-  - `/kata/list`
+  - `/kata`
 - Method:
   - `GET`
 - Header:
@@ -184,10 +184,36 @@
   }
   ```
 
+  ### - add Kata
+
+- Path :
+  - `/kata`
+- Method:
+  - `POST`
+- Header:
+  - Authorization: Bearer - token
+- Request
+  - body request (it depend what you want to edit)
+  ```
+  {
+    "indonesia": "xxx",
+    "sasak": "xxx",
+    "audioUrl": "xxx",
+    "contohPenggunaan": "xxx",
+  }
+  ```
+- Response
+  ```
+  { 
+      "error": [],
+      "message": "add Kata Success",
+  }
+  ```
+
 ### - Search Kata Indonesia - Sasak
 
 - Path :
-  - `/kata/indonesia?kata=`
+  - `/kata/t/indonesia?cari=`
 - Method:
   - `GET`
 - Header:
@@ -210,7 +236,7 @@
 ### - Search Kata Sasak - Indonesia
 
 - Path :
-  - `/kata/seacrh/sasak/:kata`
+  - `/kata/t/sasak?cari=`
 - Method:
   - `GET`
 - Header:
