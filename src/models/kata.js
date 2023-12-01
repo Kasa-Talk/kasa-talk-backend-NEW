@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      // Kata.belongsTo(models.User, {
+      //   foreignKey: 'userId',
+      //   onDelete: 'RESTRICT',
+      //   onUpdate: 'RESTRICT',
+      // })
     }
   }
   Kata.init({
@@ -25,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'kata',
+    modelName: 'Kata',
   });
   return Kata;
 };
