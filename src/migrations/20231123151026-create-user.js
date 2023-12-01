@@ -1,3 +1,6 @@
+const moment = require('moment');
+
+// eslint-disable-next-line no-unused-expressions
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
@@ -25,6 +28,16 @@ module.exports = {
       avatarUrl: {
         type: Sequelize.STRING,
       },
+      expireTime: {
+        type: Sequelize.DATE,
+        set(value) {
+          if (value !== null) {
+            this.setDataValue('expireTime', moment(value).add(1, 'hours'));
+          } else {
+            this.setDataValue('expireTime', null);
+          }
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -35,6 +48,7 @@ module.exports = {
       },
     });
   },
+  // eslint-disable-next-line no-unused-vars
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Users');
   },

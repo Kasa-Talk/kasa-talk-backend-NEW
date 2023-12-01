@@ -1,7 +1,9 @@
-'use strict';
+// eslint-disable-next-line lines-around-directive
+
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Kata extends Model {
     /**
@@ -9,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+    // eslint-disable-next-line no-unused-vars
     static associate(models) {
       // define association here
       // Kata.belongsTo(models.User, {

@@ -1,5 +1,3 @@
-'use strict';
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -32,7 +30,7 @@ module.exports = {
         values: ['active', 'inactive', 'pending'],
         defaultValue: 'pending',
       },
-      userId: { 
+      userId: {
         type: Sequelize.UUID,
         allowNull: true,
       },
@@ -46,6 +44,7 @@ module.exports = {
       },
     });
   },
+  // eslint-disable-next-line no-unused-vars
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Kata');
   },

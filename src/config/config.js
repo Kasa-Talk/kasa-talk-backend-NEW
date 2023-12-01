@@ -1,17 +1,28 @@
 require('dotenv').config();
 
 module.exports = {
+  // development: {
+  //   username: process.env.DB_USERNAME,
+  //   password: process.env.DB_PASSWORD,
+  //   database: process.env.DB_NAME,
+  //   host: process.env.DB_HOST,
+  //   dialect: process.env.DB_DIALECT,
+  //   dialectOptions: {
+  //     ssl: {
+  //       require: true,
+  //       rejectUnauthorized: false,
+  //     },
+  //     dateStrings: true,
+  //   },
+  // },
   development: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    dialect: process.env.DB_DIALECT,
+    username: 'root',
+    password: '',
+    database: 'kasa_talk_test',
+    host: '127.0.0.1',
+    dialect: 'mysql',
+    port: '3306',
     dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
       dateStrings: true,
     },
   },
