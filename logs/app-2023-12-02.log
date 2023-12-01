@@ -1,0 +1,12 @@
+ [LOGGER] 2023-12-02 02:28:03.140 AM error : uncaughtException: Values for ENUM have not been defined.
+Error: Values for ENUM have not been defined.
+    at Sequelize.normalizeAttribute (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/sequelize/lib/sequelize.js:593:15)
+    at /Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/sequelize/lib/model.js:724:34
+    at /Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/lodash/lodash.js:13469:38
+    at /Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/lodash/lodash.js:4967:15
+    at baseForOwn (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/lodash/lodash.js:3032:24)
+    at Function.mapValues (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/lodash/lodash.js:13468:7)
+    at Kata.init (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/sequelize/lib/model.js:723:28)
+    at module.exports (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/kata.js:14:8)
+    at /Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/index.js:29:54
+    at Array.forEach (<anonymous>)
