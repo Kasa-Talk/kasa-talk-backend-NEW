@@ -1,6 +1,6 @@
 const moment = require('moment');
 const { v4: uuidv4 } = require('uuid');
-const { encript } = require('../utils/bcrypt');
+const { encrypt } = require('../utils/bcrypt');
 require('dotenv').config();
 
 /** @type {import('sequelize-cli').Migration} */
@@ -31,7 +31,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         set(value) {
-          this.setDataValue('password', encript(value));
+          this.setDataValue('password', encrypt(value));
         },
       },
       isActive: {
@@ -56,6 +56,7 @@ module.exports = {
       },
     });
   },
+  // eslint-disable-next-line no-unused-vars
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Users');
   },
