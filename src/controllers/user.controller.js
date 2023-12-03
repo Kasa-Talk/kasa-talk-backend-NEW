@@ -15,6 +15,7 @@ const {
   parseJWT,
 } = require('../utils/jwt');
 const { compare } = require('../utils/bcrypt');
+const { isExists } = require('../validation/sanitization');
 
 // eslint-disable-next-line consistent-return
 const setUser = async (req, res, next) => {
@@ -394,6 +395,74 @@ const setRefreshToken = async (req, res, next) => {
   }
 };
 
+// eslint-disable-next-line consistent-return
+const updateUser = async (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+    const tokenInfo = getUserIdFromAccessToken(token);
+    const { id } = tokenInfo;
+
+    const valid = {};
+    if (isExists(req.body.name)) {
+      valid.name = 'required';
+    }
+    if (isExists(req.body.email)) {
+      valid.email = 'required,isEmail';
+    }
+    if (isExists(req.body.password)) {
+      valid.password = 'required,isStrongPassword';
+      valid.confirmPassword = 'required';
+    }
+    if (isExists(req.body.country)) {
+      valid.country = 'required';
+    }
+    if (isExists(req.body.phoneNumber)) {
+      valid.phoneNumber = 'required';
+    }
+    const user = await dataValid(valid, req.body);
+    if (
+      isExists(user.data.password)
+      && user.data.password !== user.data.confirmPassword
+    ) {
+      user.message.push('Password not match');
+    }
+    if (user.message.length > 0) {
+      return res.status(400).json({
+        errors: user.message,
+        message: 'Update Failed',
+        data: null,
+      });
+    }
+    const result = await User.update(
+      {
+        ...user.data,
+      },
+      {
+        where: {
+          id,
+        },
+      },
+    );
+    if (result[0] === 0) {
+      return res.status(404).json({
+        errors: ['User not found'],
+        message: 'Update Failed',
+        data: null,
+      });
+    }
+    return res.status(200).json({
+      errors: [],
+      message: 'User updated successfully',
+      data: user.data,
+    });
+  } catch (error) {
+    next(
+      new Error(`controllers/userController.js:updateUser - ${error.message}`),
+    );
+  }
+};
+
 module.exports = {
   setUser,
   setActivateUser,
@@ -401,4 +470,5 @@ module.exports = {
   getUserById,
   setLogin,
   setRefreshToken,
+  updateUser,
 };
