@@ -41,7 +41,7 @@ const forgotPassword = (email, password) => ({
   subject: 'Password Reset Confirmation',
   html: `
       <div style="font-family: 'Arial', sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #32823A;">Password Reset Confirmation</h2>
+        <h2 style="color: #D61F3B;">Password Reset Confirmation</h2>
         <p>We received a request to reset your account password. Below are your new login details:</p>
 
         <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 20px;">
