@@ -826,3 +826,27 @@ SyntaxError: Unexpected identifier
     at require (node:internal/modules/cjs/helpers:119:18)
     at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:2:50)
     at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-03 05:44:50.526 PM error : uncaughtException: user is not defined
+ReferenceError: user is not defined
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:9:1)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/index.js:3:20)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+ [LOGGER] 2023-12-03 05:45:27.355 PM error : uncaughtException: user is not defined
+ReferenceError: user is not defined
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:10:1)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/index.js:3:20)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)

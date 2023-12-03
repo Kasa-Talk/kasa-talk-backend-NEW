@@ -3,8 +3,12 @@ const { Op } = require('sequelize');
 const { dataValid } = require('../validation/dataValidation');
 const { sendMail } = require('../utils/sendMail');
 const { User, sequelize } = require('../models');
-const { userNotFoundHtml, userActivatedHtml } = require('../utils/responActivation');
-const { getUserIdFromAccessToken } = require('../utils/jwt');
+const {
+  userNotFoundHtml,
+  userActivatedHtml,
+} = require('../utils/responActivation');
+const { getUserIdFromAccessToken, generateAccessToken, generateRefreshToken } = require('../utils/jwt');
+const { compare } = require('../utils/bcrypt');
 
 // eslint-disable-next-line consistent-return
 const setUser = async (req, res, next) => {
@@ -51,21 +55,29 @@ const setUser = async (req, res, next) => {
     let currentDateTime = null;
 
     if (userExists.length > 0) {
-      expireTimeMoment = moment(userExists[0].expireTime, 'YYYY-MM-DD HH:mm:ss').utcOffset('+08:00');
+      expireTimeMoment = moment(
+        userExists[0].expireTime,
+        'YYYY-MM-DD HH:mm:ss',
+      ).utcOffset('+08:00');
       currentDateTime = moment().utcOffset('+08:00');
     }
 
-    if (userExists.length > 0
+    if (
+      userExists.length > 0
       && !userExists[0].isActive
-      && expireTimeMoment.isAfter(currentDateTime)) {
+      && expireTimeMoment.isAfter(currentDateTime)
+    ) {
       return res.status(400).json({
-        errors: ['Account already registered, please check your email to activate your account'],
+        errors: [
+          'Account already registered, please check your email to activate your account',
+        ],
         message: 'Register Field',
         data: null,
       });
     }
 
-    if (userExists.length > 0
+    if (
+      userExists.length > 0
       && !userExists[0].isActive
       && !expireTimeMoment.isAfter(currentDateTime)
     ) {
@@ -77,11 +89,14 @@ const setUser = async (req, res, next) => {
       });
     }
 
-    const newUser = await User.create({
-      ...user.data,
-    }, {
-      transaction,
-    });
+    const newUser = await User.create(
+      {
+        ...user.data,
+      },
+      {
+        transaction,
+      },
+    );
 
     if (!newUser) {
       await transaction.rollback();
@@ -105,7 +120,9 @@ const setUser = async (req, res, next) => {
 
     await transaction.commit();
 
-    const formattedExpireTime = moment(newUser.expireTime).format('YYYY-MM-DD HH:mm:ss');
+    const formattedExpireTime = moment(newUser.expireTime).format(
+      'YYYY-MM-DD HH:mm:ss',
+    );
 
     res.status(201).json({
       errors: null,
@@ -235,9 +252,79 @@ const getUserById = async (req, res, next) => {
   }
 };
 
+// eslint-disable-next-line consistent-return
+const setLogin = async (req, res, next) => {
+  try {
+    const valid = {
+      email: 'required,isEmail',
+      password: 'required',
+    };
+    const user = await dataValid(valid, req.body);
+    const { data } = user;
+    if (user.message.length > 0) {
+      return res.status(400).json({
+        errors: user.message,
+        message: 'Login Failed',
+        data: null,
+      });
+    }
+
+    const userExists = await User.findOne({
+      where: {
+        email: data.email,
+        isActive: true,
+      },
+    });
+
+    if (!userExists) {
+      return res.status(400).json({
+        errors: ['User not found'],
+        message: 'Login Failed',
+        data,
+      });
+    }
+    if (compare(data.password, userExists.password)) {
+      const usr = {
+        id: userExists.id,
+        name: userExists.name,
+        email: userExists.email,
+        role: 'user', // default role user
+      };
+
+      // khusus admin login
+      const adminEmail = process.env.ADMIN_EMAIL;
+      if (req.url.includes('/admin') && usr.email === adminEmail) {
+        usr.role = 'admin';
+      }
+
+      const token = generateAccessToken(usr);
+      const refreshToken = generateRefreshToken(usr);
+
+      return res.status(200).json({
+        errors: [],
+        message: 'Login successfully',
+        data: usr,
+        accessToken: token,
+        refreshToken,
+      });
+    }
+
+    return res.status(400).json({
+      errors: ['Wrong password'],
+      message: 'Login Failed',
+      data,
+    });
+  } catch (error) {
+    next(
+      new Error(`controllers/userController.js:setLogin - ${error.message}`),
+    );
+  }
+};
+
 module.exports = {
   setUser,
   setActivateUser,
   getAllUser,
   getUserById,
+  setLogin,
 };
