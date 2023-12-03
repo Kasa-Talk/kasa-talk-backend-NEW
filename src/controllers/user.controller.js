@@ -1,7 +1,9 @@
 const moment = require('moment');
+const { Op } = require('sequelize');
 const { dataValid } = require('../validation/dataValidation');
 const { sendMail } = require('../utils/sendMail');
 const { User, sequelize } = require('../models');
+const { userNotFoundHtml, userActivatedHtml } = require('../utils/responActivation');
 
 // eslint-disable-next-line consistent-return
 const setUser = async (req, res, next) => {
@@ -129,6 +131,42 @@ const setUser = async (req, res, next) => {
   }
 };
 
+// eslint-disable-next-line consistent-return
+const setActivateUser = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const user = await User.findOne({
+      where: {
+        id: userId,
+        isActive: false,
+        expireTime: {
+          [Op.gte]: moment().utcOffset('+08:00').format('YYYY-MM-DD HH:mm:ss'),
+        },
+      },
+    });
+    if (!user) {
+      return res.status(404).send(userNotFoundHtml);
+    }
+    const userName = user.name;
+    const userEmail = user.email;
+
+    user.isActive = true;
+    user.expireTime = null;
+    await user.save();
+
+    const userActivatedResponse = userActivatedHtml(userName, userEmail);
+
+    return res.status(200).send(userActivatedResponse);
+  } catch (error) {
+    next(
+      new Error(
+        `controllers/userController.js:setActivateUser - ${error.message}`,
+      ),
+    );
+  }
+};
+
 module.exports = {
   setUser,
+  setActivateUser,
 };
