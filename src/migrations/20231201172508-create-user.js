@@ -44,7 +44,7 @@ module.exports = {
       },
       expireTime: {
         type: Sequelize.DATE,
-        defaultValue: moment().add(1, 'hours').toDate(),
+        defaultValue: moment().utcOffset('+08:00').add(1, 'hours').toDate(),
       },
       createdAt: {
         allowNull: false,

@@ -21,6 +21,7 @@ module.exports = {
   //       return next();
   //     },
   //   },
+  //   timezone: '+08:00',
   // },
   development: {
     username: process.env.DB_USERNAME_TEST,
@@ -29,6 +30,7 @@ module.exports = {
     host: process.env.DB_HOST_TEST,
     dialect: process.env.DB_DIALECT_TEST,
     port: process.env.DB_PORT_TEST,
+    logging: false,
     dialectOptions: {
       dateStrings: true,
       typeCast(field, next) {
@@ -39,6 +41,7 @@ module.exports = {
         return next();
       },
     },
+    timezone: '+08:00',
   },
   test: {
     username: process.env.DB_USERNAME_TEST,
@@ -57,6 +60,7 @@ module.exports = {
         return next();
       },
     },
+    timezone: '+08:00',
   },
   production: {
     username: process.env.DB_USERNAME_PROD,
@@ -75,5 +79,6 @@ module.exports = {
         return next();
       },
     },
+    timezone: '+08:00',
   },
 };

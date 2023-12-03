@@ -1,8 +1,7 @@
 const moment = require('moment');
 const { dataValid } = require('../validation/dataValidation');
 const { sendMail } = require('../utils/sendMail');
-const { User } = require('../models');
-const { unsubscribe } = require('../middleware');
+const { User, sequelize } = require('../models');
 
 // eslint-disable-next-line consistent-return
 const setUser = async (req, res, next) => {
@@ -13,10 +12,11 @@ const setUser = async (req, res, next) => {
     confirmPassword: 'required',
   };
 
+  const transaction = await sequelize.transaction();
+
   try {
     const user = await dataValid(valid, req.body);
 
-    // Cek password
     if (user.data.password !== user.data.confirmPassword) {
       user.message.push('Password does not match');
     }
@@ -30,46 +30,60 @@ const setUser = async (req, res, next) => {
     }
 
     const userExists = await User.findAll({
-      attributes: ['name', 'email', 'isActive', 'expireTime'],
       where: {
         email: user.data.email,
       },
+      transaction,
     });
 
-    console.log(userExists);
-
-    if (userExists) {
+    if (userExists.length > 0 && userExists[0].isActive) {
       return res.status(400).json({
-        errors: ['Email already activated'],
+        errors: ['Account already activated'],
         message: 'Register Field',
         data: null,
-      });
-      // eslint-disable-next-line no-else-return
-    } else if (
-      userExists > 0
-      && !userExists[0].isActive
-      && Date.parse(userExists[0].expireTime) > new Date()
-    ) {
-      return res.status(400).json({
-        errors: ['Email already registered, please check your email'],
-        message: 'Register Field',
-        data: null,
-      });
-    } else {
-      User.destroy({
-        where: {
-          email: user.data.email,
-        },
       });
     }
 
-    console.log(user.data);
+    let expireTimeMoment = null;
+    let currentDateTime = null;
+
+    if (userExists.length > 0) {
+      expireTimeMoment = moment(userExists[0].expireTime, 'YYYY-MM-DD HH:mm:ss').utcOffset('+08:00');
+      currentDateTime = moment().utcOffset('+08:00');
+    }
+    console.log(expireTimeMoment);
+    console.log(currentDateTime);
+
+    if (userExists.length > 0
+      && !userExists[0].isActive
+      && expireTimeMoment.isAfter(currentDateTime)) {
+      return res.status(400).json({
+        errors: ['Account already registered, please check your email to activate your account'],
+        message: 'Register Field',
+        data: null,
+      });
+    }
+
+    if (userExists.length > 0
+      && !userExists[0].isActive
+      && !expireTimeMoment.isAfter(currentDateTime)
+    ) {
+      await User.destroy({
+        where: {
+          email: user.data.email,
+        },
+        transaction,
+      });
+    }
 
     const newUser = await User.create({
       ...user.data,
+    }, {
+      transaction,
     });
 
     if (!newUser) {
+      await transaction.rollback();
       return res.status(500).json({
         errors: ['User not created in the database'],
         message: 'Register Failed',
@@ -77,26 +91,33 @@ const setUser = async (req, res, next) => {
       });
     }
 
-    // const result = await sendMail(newUser.email, newUser.id);
+    const result = await sendMail(newUser.email, newUser.id);
 
-    // if (!result) {
-    //   return res.status(500).json({
-    //     errors: ['Send email failed'],
-    //     message: 'Register Failed',
-    //     data: null,
-    //   });
-    // }
+    if (!result) {
+      await transaction.rollback();
+      return res.status(500).json({
+        errors: ['Send email failed'],
+        message: 'Register Failed',
+        data: null,
+      });
+    }
+
+    await transaction.commit();
+
+    const formattedExpireTime = moment(newUser.expireTime).format('YYYY-MM-DD HH:mm:ss');
+
     res.status(201).json({
       errors: null,
-      message: 'User created, please check your email',
+      message: 'User created, please check your email to activate your account',
       data: {
         id: newUser.id,
         name: newUser.name,
         email: newUser.email,
-        expireTime: newUser.expireTime,
+        expireTime: formattedExpireTime,
       },
     });
   } catch (error) {
+    await transaction.rollback();
     next(
       new Error(`controllers/user.controller.js:setUser - ${error.message}`),
     );
@@ -111,48 +132,3 @@ const setUser = async (req, res, next) => {
 module.exports = {
   setUser,
 };
-
-// const { User } = require('../models');
-
-// // eslint-disable-next-line consistent-return
-// const setUser = async (req, res, next) => {
-//   const { name, email, password } = req.body;
-//   try {
-//     const newUser = await User.create({
-//       name,
-//       email,
-//       password,
-//     });
-
-//     if (!newUser) {
-//       return res.status(500).json({
-//         errors: ['User not created in the database'],
-//         message: 'Register Failed',
-//         data: null,
-//       });
-//     }
-
-//     console.log(newUser);
-
-//     res.status(201).json({
-//       errors: null,
-//       message: 'User created',
-//       data: {
-//         id: newUser.id,
-//         name: newUser.name,
-//         email: newUser.email,
-//       },
-//     });
-//   } catch (error) {
-//     console.error('Error creating user:', error);
-//     return res.status(500).json({
-//       errors: ['User creation failed'],
-//       message: 'Register Failed',
-//       data: null,
-//     });
-//   }
-// };
-
-// module.exports = {
-//   setUser,
-// };

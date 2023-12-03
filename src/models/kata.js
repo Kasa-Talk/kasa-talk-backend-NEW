@@ -28,6 +28,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'Kata',
+      timestamps: true,
+      timezone: '+08:00',
     },
   );
   return Kata;
