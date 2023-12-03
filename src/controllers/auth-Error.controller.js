@@ -50,4 +50,4 @@ const autenticate = (req, res, next) => {
   next();
 };
 
-export { errorrHandling, autenticate };
+module.exports = { errorrHandling, autenticate };

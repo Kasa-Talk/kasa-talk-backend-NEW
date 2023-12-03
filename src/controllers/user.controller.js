@@ -7,7 +7,13 @@ const {
   userNotFoundHtml,
   userActivatedHtml,
 } = require('../utils/responActivation');
-const { getUserIdFromAccessToken, generateAccessToken, generateRefreshToken } = require('../utils/jwt');
+const {
+  getUserIdFromAccessToken,
+  generateAccessToken,
+  generateRefreshToken,
+  verifyRefreshToken,
+  parseJWT,
+} = require('../utils/jwt');
 const { compare } = require('../utils/bcrypt');
 
 // eslint-disable-next-line consistent-return
@@ -221,11 +227,12 @@ const getUserById = async (req, res, next) => {
     const authHeader = req.headers.authorization;
     const token = authHeader && authHeader.split(' ')[1];
     const tokenInfo = getUserIdFromAccessToken(token);
-    const { userId } = tokenInfo;
+
+    const { id } = tokenInfo;
 
     const user = await User.findOne({
       where: {
-        id: userId,
+        id,
       },
     });
     if (!user) {
@@ -321,10 +328,77 @@ const setLogin = async (req, res, next) => {
   }
 };
 
+// eslint-disable-next-line consistent-return
+const setRefreshToken = async (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+    if (!token) {
+      return res.status(401).json({
+        errors: ['Refresh token not found'],
+        message: 'Refresh Failed',
+        data: null,
+      });
+    }
+    const verify = verifyRefreshToken(token);
+    if (!verify) {
+      return res.status(401).json({
+        errors: ['Invalid refresh token'],
+        message: 'Refresh Failed',
+        data: null,
+      });
+    }
+    const data = parseJWT(token);
+    const user = await User.findOne({
+      where: {
+        email: data.email,
+        isActive: true,
+      },
+    });
+    if (!user) {
+      return res.status(404).json({
+        errors: ['User not found'],
+        message: 'Refresh Failed',
+        data: null,
+      });
+    }
+
+    const usr = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: 'user', // default role user
+    };
+
+    const adminEmail = process.env.ADMIN_EMAIL;
+    if (req.url.includes('/admin') && usr.email === adminEmail) {
+      usr.role = 'admin';
+    }
+
+    const tokenNew = generateAccessToken(usr);
+    const refreshToken = generateRefreshToken(usr);
+
+    return res.status(200).json({
+      errors: [],
+      message: 'Refresh successfully',
+      data: usr,
+      accessToken: tokenNew,
+      refreshToken,
+    });
+  } catch (error) {
+    next(
+      new Error(
+        `controllers/userController.js:setRefreshToken - ${error.message}`,
+      ),
+    );
+  }
+};
+
 module.exports = {
   setUser,
   setActivateUser,
   getAllUser,
   getUserById,
   setLogin,
+  setRefreshToken,
 };
