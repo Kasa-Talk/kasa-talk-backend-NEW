@@ -1,7 +1,8 @@
 const moment = require('moment');
 const { Op } = require('sequelize');
+const { Entropy, charset32 } = require('entropy-string');
 const { dataValid } = require('../validation/dataValidation');
-const { sendMail } = require('../utils/sendMail');
+const { sendMail, sendPassword } = require('../utils/sendMail');
 const { User, sequelize } = require('../models');
 const {
   userNotFoundHtml,
@@ -463,6 +464,74 @@ const updateUser = async (req, res, next) => {
   }
 };
 
+// eslint-disable-next-line consistent-return
+const forgotPassword = async (req, res, next) => {
+  const t = await sequelize.transaction();
+  try {
+    const valid = {
+      email: 'required,isEmail',
+    };
+    const userData = await dataValid(valid, req.body);
+    if (userData.message.length > 0) {
+      return res.status(400).json({
+        errors: userData.message,
+        message: 'Forgot Password Failed',
+        data: null,
+      });
+    }
+    const user = await User.findOne({
+      where: {
+        email: userData.data.email,
+      },
+    });
+    if (!user) {
+      return res.status(404).json({
+        errors: ['User not found'],
+        message: 'Forgot Password Failed',
+        data: null,
+      });
+    }
+    // get random password
+    const random = new Entropy({ bits: 60, charset: charset32 });
+    const stringPwd = random.string();
+    await User.update(
+      {
+        password: stringPwd,
+      },
+      {
+        where: {
+          id: user.id,
+        },
+        transaction: t,
+      },
+    );
+
+    const result = await sendPassword(user.email, stringPwd);
+
+    if (!result) {
+      await t.rollback();
+      return res.status(400).json({
+        errors: ['Email not sent'],
+        message: 'Forgot Password Failed',
+        data: null,
+      });
+    }
+    await t.commit();
+    return res.status(200).json({
+      errors: [],
+      message: 'Forgot Password success, please check your email',
+      data: null,
+    });
+  } catch (error) {
+    await t.rollback();
+    next(
+      new Error(
+        `controllers/userController.js:forgotPassword - ${error.message}`,
+      ),
+    );
+  }
+};
+
 module.exports = {
   setUser,
   setActivateUser,
@@ -471,4 +540,5 @@ module.exports = {
   setLogin,
   setRefreshToken,
   updateUser,
+  forgotPassword,
 };

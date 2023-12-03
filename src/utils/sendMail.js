@@ -35,6 +35,37 @@ const createEmail = (email, token) => ({
       `,
 });
 
+const forgotPassword = (email, password) => ({
+  from: process.env.MAIL_FROM,
+  to: email,
+  subject: 'Password Reset Confirmation',
+  html: `
+      <div style="font-family: 'Arial', sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #32823A;">Password Reset Confirmation</h2>
+        <p>We received a request to reset your account password. Below are your new login details:</p>
+
+        <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 20px;">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 30%;"><strong>Email:</strong></td>
+              <td>${email}</td>
+            </tr>
+            <tr>
+              <td style="width: 30%;"><strong>New Password:</strong></td>
+              <td>${password}</td>
+            </tr>
+          </table>
+        </div>
+
+        <p style="margin-top: 20px;">For security reasons, we recommend changing your password after logging in. If you didn't request a password reset, please contact us immediately.</p>
+
+        <p style="margin-top: 20px;">Thank you for using our service. If you have any questions or need further assistance, feel free to contact us.</p>
+
+        <p style="margin-top: 40px; color: #888;">Best Regards,<br>Kasa Talk</p>
+      </div>
+    `,
+});
+
 const sendMail = (email, token) => new Promise((resolve, reject) => {
   transporter.sendMail(createEmail(email, token), (err, info) => {
     if (err) {
@@ -47,6 +78,19 @@ const sendMail = (email, token) => new Promise((resolve, reject) => {
   });
 });
 
+const sendPassword = (email, password) => new Promise((resolve, reject) => {
+  transporter.sendMail(forgotPassword(email, password), (err, info) => {
+    if (err) {
+      console.log(err);
+      reject(err);
+    } else {
+      console.log(`Email sent (sendPassword): ${info.response}`);
+      resolve(true);
+    }
+  });
+});
+
 module.exports = {
   sendMail,
+  sendPassword,
 };

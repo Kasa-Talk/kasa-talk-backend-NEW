@@ -7,6 +7,7 @@ const {
   getUserById,
   setRefreshToken,
   updateUser,
+  forgotPassword,
 } = require('../controllers/user.controller');
 const { autenticate } = require('../controllers/auth-Error.controller');
 
@@ -29,5 +30,7 @@ userRouter.post('/admin/login', setLogin); // admin only
 userRouter.get('/admin/refresh', setRefreshToken); // admin only
 
 userRouter.patch('/users', autenticate, updateUser);
+
+userRouter.post('/users/forgot-password', forgotPassword);
 
 module.exports = userRouter;
