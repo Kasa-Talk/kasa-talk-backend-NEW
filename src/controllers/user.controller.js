@@ -4,6 +4,7 @@ const { dataValid } = require('../validation/dataValidation');
 const { sendMail } = require('../utils/sendMail');
 const { User, sequelize } = require('../models');
 const { userNotFoundHtml, userActivatedHtml } = require('../utils/responActivation');
+const { getUserIdFromAccessToken } = require('../utils/jwt');
 
 // eslint-disable-next-line consistent-return
 const setUser = async (req, res, next) => {
@@ -53,8 +54,6 @@ const setUser = async (req, res, next) => {
       expireTimeMoment = moment(userExists[0].expireTime, 'YYYY-MM-DD HH:mm:ss').utcOffset('+08:00');
       currentDateTime = moment().utcOffset('+08:00');
     }
-    console.log(expireTimeMoment);
-    console.log(currentDateTime);
 
     if (userExists.length > 0
       && !userExists[0].isActive
@@ -166,7 +165,79 @@ const setActivateUser = async (req, res, next) => {
   }
 };
 
+// eslint-disable-next-line consistent-return
+const getAllUser = async (req, res, next) => {
+  try {
+    const users = await User.findAll();
+
+    if (!users) {
+      return res.status(404).json({
+        errors: ['User not found'],
+        message: 'User not found',
+        data: null,
+      });
+    }
+
+    const allUser = users.map((user) => ({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      avatarUrl: user.avatarUrl,
+      isActive: user.isActive,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    }));
+
+    res.status(200).json({
+      errors: [],
+      message: 'User retrieved successfully',
+      data: allUser,
+    });
+  } catch (error) {
+    next(new Error(`controllers/userController.js:getUser - ${error.message}`));
+  }
+};
+
+// eslint-disable-next-line consistent-return
+const getUserById = async (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+    const tokenInfo = getUserIdFromAccessToken(token);
+    const { userId } = tokenInfo;
+
+    const user = await User.findOne({
+      where: {
+        id: userId,
+      },
+    });
+    if (!user) {
+      return res.status(404).json({
+        errors: ['User not found'],
+        message: 'Get User By Id Failed',
+        data: null,
+      });
+    }
+    return res.status(200).json({
+      errors: [],
+      message: 'Get user by id successfully',
+      data: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        avatarUrl: user.avatarUrl,
+      },
+    });
+  } catch (error) {
+    next(
+      new Error(`controllers/userController.js:getUserById - ${error.message}`),
+    );
+  }
+};
+
 module.exports = {
   setUser,
   setActivateUser,
+  getAllUser,
+  getUserById,
 };
