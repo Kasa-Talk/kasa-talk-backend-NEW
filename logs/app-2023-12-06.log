@@ -1,0 +1,317 @@
+ [LOGGER] 2023-12-06 12:42:19.165 AM error : controllers/user.controller.js:setUser - connect ECONNREFUSED 74.125.24.109:465
+ [LOGGER] 2023-12-06 12:42:19.169 AM error : uncaughtException: Cannot set headers after they are sent to the client
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.setHeader (node:_http_outgoing:648:11)
+    at ServerResponse.header (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/express/lib/response.js:794:10)
+    at ServerResponse.send (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/express/lib/response.js:174:12)
+    at ServerResponse.json (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/express/lib/response.js:278:15)
+    at setUser (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:148:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ [LOGGER] 2023-12-06 01:32:21.269 AM error : controllers/userController.js:updateAvatarUser - uuid is not a function
+ [LOGGER] 2023-12-06 01:46:12.330 AM error : uncaughtException: Unexpected token ')'
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:575
+    const blob = bucket.file);
+                            ^
+
+SyntaxError: Unexpected token ')'
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:12:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 01:48:19.011 AM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:566
+        firebaseStorageDownloadTokens: ,
+                                       ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:12:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 01:52:13.206 AM error : uncaughtException: updateAvatarUser is not defined
+ReferenceError: updateAvatarUser is not defined
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:549:3)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:12:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+ [LOGGER] 2023-12-06 02:15:04.819 AM error : uncaughtException: Transaction cannot be rolled back because it has been finished with state: commit
+Error: Transaction cannot be rolled back because it has been finished with state: commit
+    at Transaction.rollback (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/sequelize/lib/transaction.js:59:13)
+    at setUser (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:149:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ [LOGGER] 2023-12-06 02:18:14.169 AM error : controllers/user.controller.js:setUser - moment(...).format(...).utcOffset is not a function
+ [LOGGER] 2023-12-06 02:18:14.185 AM error : uncaughtException: Cannot set headers after they are sent to the client
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.setHeader (node:_http_outgoing:648:11)
+    at ServerResponse.header (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/express/lib/response.js:794:10)
+    at ServerResponse.send (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/express/lib/response.js:174:12)
+    at ServerResponse.json (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/express/lib/response.js:278:15)
+    at setUser (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:153:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ [LOGGER] 2023-12-06 02:18:56.790 AM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:145
+        expireTime: new,
+                       ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:12:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 02:21:05.972 AM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:141
+        expireTime: newUser.expireTime.,
+                                       ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:12:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 02:23:13.917 AM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/user.js:61
+        defaultValue: ,
+                      ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at /Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/index.js:29:19
+    at Array.forEach (<anonymous>)
+ [LOGGER] 2023-12-06 02:24:23.647 AM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/user.js:61
+        defaultValue: ,
+                      ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at /Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/index.js:29:19
+    at Array.forEach (<anonymous>)
+ [LOGGER] 2023-12-06 02:25:16.544 AM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/user.js:61
+        defaultValue: ,
+                      ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at /Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/index.js:29:19
+    at Array.forEach (<anonymous>)
+ [LOGGER] 2023-12-06 02:25:17.807 AM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/user.js:61
+        defaultValue: ,
+                      ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at /Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/index.js:29:19
+    at Array.forEach (<anonymous>)
+ [LOGGER] 2023-12-06 02:25:24.416 AM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/user.js:61
+        defaultValue: ,
+                      ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at /Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/index.js:29:19
+    at Array.forEach (<anonymous>)
+ [LOGGER] 2023-12-06 02:25:27.930 AM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/user.js:61
+        defaultValue: ,
+                      ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at /Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/index.js:29:19
+    at Array.forEach (<anonymous>)
+ [LOGGER] 2023-12-06 02:25:33.458 AM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/user.js:61
+        defaultValue: ,
+                      ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at /Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/index.js:29:19
+    at Array.forEach (<anonymous>)
+ [LOGGER] 2023-12-06 02:25:41.535 AM error : uncaughtException: allowNull is not defined
+ReferenceError: allowNull is not defined
+    at module.exports (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/user.js:61:9)
+    at /Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/index.js:29:54
+    at Array.forEach (<anonymous>)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/index.js:27:4)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-06 02:26:14.557 AM error : uncaughtException: Unexpected token '}'
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:107
+      },
+      ^
+
+SyntaxError: Unexpected token '}'
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:12:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 02:26:20.466 AM error : uncaughtException: Unexpected token ';'
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:106
+        expireTime: moment().utcOffset('+08:00').add(1, 'hours').toDate();
+                                                                         ^
+
+SyntaxError: Unexpected token ';'
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:12:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 02:29:24.011 AM error : controllers/user.controller.js:setUser - moment(...).format(...).utcOffset is not a function
+ [LOGGER] 2023-12-06 02:29:24.018 AM error : uncaughtException: Cannot set headers after they are sent to the client
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.setHeader (node:_http_outgoing:648:11)
+    at ServerResponse.header (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/express/lib/response.js:794:10)
+    at ServerResponse.send (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/express/lib/response.js:174:12)
+    at ServerResponse.json (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/express/lib/response.js:278:15)
+    at setUser (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:151:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ [LOGGER] 2023-12-06 02:29:41.520 AM error : uncaughtException: Unexpected identifier
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:106
+        expireTime: moment()utcOffset('+08:00').add(1, 'hours').toDate(),
+                            ^^^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:12:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 02:30:00.537 AM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:142
+        expireTime: ,
+                    ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:12:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 02:30:17.254 AM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:142
+        expireTime: moment(newUser.expireTime).,
+                                               ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:12:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 02:32:30.321 AM error : controllers/userController.js:setLogin - secretOrPrivateKey must have a value

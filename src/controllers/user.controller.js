@@ -1,5 +1,7 @@
 const moment = require('moment');
 const { Op } = require('sequelize');
+const { v4: uuid } = require('uuid');
+const { promisify } = require('util');
 const { Entropy, charset32 } = require('entropy-string');
 const { dataValid } = require('../validation/dataValidation');
 const { sendMail, sendPassword } = require('../utils/sendMail');
@@ -17,6 +19,7 @@ const {
 } = require('../utils/jwt');
 const { compare } = require('../utils/bcrypt');
 const { isExists } = require('../validation/sanitization');
+const { bucket } = require('../middleware/multer');
 
 // eslint-disable-next-line consistent-return
 const setUser = async (req, res, next) => {
@@ -100,6 +103,7 @@ const setUser = async (req, res, next) => {
     const newUser = await User.create(
       {
         ...user.data,
+        expireTime: moment().utcOffset('+08:00').add(1, 'hours').toDate(),
       },
       {
         transaction,
@@ -128,8 +132,6 @@ const setUser = async (req, res, next) => {
 
     await transaction.commit();
 
-    const formattedExpireTime = moment(newUser.expireTime).format('YYYY-MM-DD HH:mm:ss').utcOffset('+08:00');
-
     res.status(201).json({
       errors: null,
       message: 'User created, please check your email to activate your account',
@@ -137,7 +139,7 @@ const setUser = async (req, res, next) => {
         id: newUser.id,
         name: newUser.name,
         email: newUser.email,
-        expireTime: formattedExpireTime,
+        expireTime: moment(newUser.expireTime).format('YYYY-MM-DD HH:mm:ss'),
       },
     });
   } catch (error) {
@@ -530,6 +532,108 @@ const forgotPassword = async (req, res, next) => {
   }
 };
 
+// eslint-disable-next-line consistent-return
+const updateAvatarUser = async (req, res, next) => {
+  const transaction = await sequelize.transaction();
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+    const tokenInfo = getUserIdFromAccessToken(token);
+    const { id } = tokenInfo;
+
+    const user = await User.findOne({
+      where: {
+        id,
+      },
+    });
+
+    if (!user) {
+      return res.status(404).json({
+        errors: ['User not found'],
+        message: 'Update Avatar Failed',
+        data: null,
+      });
+    }
+
+    if (!req.file) {
+      return res.status(400).json({
+        errors: ['File not found'],
+        message: 'Update Avatar Failed',
+        data: null,
+      });
+    }
+
+    const folderName = 'avatar';
+    const fileName = `${uuid()}-${req.file.originalname}`;
+    const filePath = `${folderName}/${fileName}`;
+
+    const metadata = {
+      metadata: {
+        firebaseStorageDownloadTokens: uuid(),
+      },
+      contentType: req.file.mimetype,
+      cacheControl: 'public, max-age=31536000',
+    };
+
+    const blob = bucket.file(filePath);
+    const blobStream = blob.createWriteStream({
+      metadata,
+      gzip: true,
+    });
+
+    blobStream.on('error', (error) => res.status(500).json({
+      errors: [error.message],
+      message: 'Update Avatar Failed',
+      data: null,
+    }));
+
+    let url;
+    blobStream.on('finish', async () => {
+      url = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURIComponent(filePath)}?alt=media`;
+    });
+
+    const blobStreamEnd = promisify(blobStream.end).bind(blobStream);
+
+    await blobStreamEnd(req.file.buffer);
+
+    const result = await User.update(
+      {
+        avatarUrl: url,
+      },
+      {
+        where: {
+          id,
+        },
+        transaction,
+      },
+    );
+
+    if (!result) {
+      await transaction.rollback();
+      return res.status(400).json({
+        errors: ['User not found'],
+        message: 'Update Avatar Failed',
+        data: null,
+      });
+    }
+
+    await transaction.commit();
+
+    return res.status(200).json({
+      errors: [],
+      message: 'Update Avatar Success',
+      data: url,
+    });
+  } catch (error) {
+    await transaction.rollback();
+    next(
+      new Error(
+        `controllers/userController.js:updateAvatarUser - ${error.message}`,
+      ),
+    );
+  }
+};
+
 module.exports = {
   setUser,
   setActivateUser,
@@ -539,4 +643,5 @@ module.exports = {
   setRefreshToken,
   updateUser,
   forgotPassword,
+  updateAvatarUser,
 };

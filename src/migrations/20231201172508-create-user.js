@@ -15,6 +15,7 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       email: {
         type: Sequelize.STRING,
@@ -44,7 +45,7 @@ module.exports = {
       },
       expireTime: {
         type: Sequelize.DATE,
-        defaultValue: moment().utcOffset('+08:00').add(1, 'hours').toDate(),
+        allowNull: true,
       },
       createdAt: {
         allowNull: false,

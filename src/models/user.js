@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       expireTime: {
         type: DataTypes.DATE,
-        defaultValue: moment().utcOffset('+08:00').add(1, 'hours').toDate(),
+        allowNull: true,
       },
     },
     {
