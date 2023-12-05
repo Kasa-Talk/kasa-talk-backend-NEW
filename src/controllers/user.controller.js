@@ -128,9 +128,7 @@ const setUser = async (req, res, next) => {
 
     await transaction.commit();
 
-    const formattedExpireTime = moment(newUser.expireTime).format(
-      'YYYY-MM-DD HH:mm:ss',
-    );
+    const formattedExpireTime = moment(newUser.expireTime).format('YYYY-MM-DD HH:mm:ss').utcOffset('+08:00');
 
     res.status(201).json({
       errors: null,
@@ -164,7 +162,7 @@ const setActivateUser = async (req, res, next) => {
         id: userId,
         isActive: false,
         expireTime: {
-          [Op.gte]: moment().utcOffset('+08:00').format('YYYY-MM-DD HH:mm:ss'),
+          [Op.gte]: moment().utcOffset('+08:00'),
         },
       },
     });
