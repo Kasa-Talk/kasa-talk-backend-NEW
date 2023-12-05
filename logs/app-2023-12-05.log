@@ -1,0 +1,12 @@
+ [LOGGER] 2023-12-05 05:29:40.484 PM error : uncaughtException: Dialect needs to be explicitly supplied as of v4.0.0
+Error: Dialect needs to be explicitly supplied as of v4.0.0
+    at new Sequelize (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/sequelize/lib/sequelize.js:136:13)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/models/index.js:16:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/kata.controller.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
