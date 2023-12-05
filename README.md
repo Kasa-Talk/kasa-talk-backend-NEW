@@ -1,6 +1,6 @@
 # KASA-TALK API SPEC
 
-### base url : `https://api.kasa-talk.com`
+### base url : `https://kasa-talk-tpe6yyswta-as.a.run.app`
 
 ## User Endpoint
 
