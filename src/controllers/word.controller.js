@@ -5,6 +5,7 @@ const { User, Kata, sequelize } = require('../models');
 const { getUserIdFromAccessToken } = require('../utils/jwt');
 const { dataValid } = require('../validation/dataValidation');
 const { bucket } = require('../middleware/multer');
+const { sendMailUploadWordAdmin, sendMailAprovalWord, sendMailDeclineWord } = require('../utils/sendMail');
 
 // eslint-disable-next-line consistent-return
 const setWord = async (req, res, next) => {
@@ -20,14 +21,14 @@ const setWord = async (req, res, next) => {
     const token = authHeader && authHeader.split(' ')[1];
     const tokenInfo = getUserIdFromAccessToken(token);
 
-    const { id, role } = tokenInfo;
+    const { id, name, role } = tokenInfo;
 
     const user = await User.findByPk(id);
 
     if (!user) {
       return res.status(404).json({
-        errors: ['Pengguna tidak ditemukan'],
-        message: 'Gagal Set Word',
+        errors: ['User not found'],
+        message: 'Set Word Failed',
         data: null,
       });
     }
@@ -37,15 +38,15 @@ const setWord = async (req, res, next) => {
     if (word.message.length > 0) {
       return res.status(400).json({
         errors: [word.message],
-        message: 'Gagal Set Word',
+        message: 'Set Word Failed',
         data: null,
       });
     }
 
     if (!req.file) {
       return res.status(400).json({
-        errors: ['File audio tidak ditemukan'],
-        message: 'Gagal Set Word',
+        errors: ['Audio file is not found'],
+        message: 'Set Word Failed',
         data: null,
       });
     }
@@ -53,8 +54,8 @@ const setWord = async (req, res, next) => {
     const allowedAudioFormats = ['audio/mpeg', 'audio/wav', 'audio/mp3'];
     if (!allowedAudioFormats.includes(req.file.mimetype)) {
       return res.status(400).json({
-        errors: ['Format file salah. Hanya MP3, WAV, and MPEG yang diizinkan.'],
-        message: ' Gagal Set Word',
+        errors: ['Only audio with extension .mp3, .wav, .mpeg is allowed'],
+        message: 'Set Word Failed',
         data: null,
       });
     }
@@ -79,7 +80,7 @@ const setWord = async (req, res, next) => {
 
     blobStream.on('error', (error) => res.status(500).json({
       errors: [error.message],
-      message: ' Gagal Set Word',
+      message: 'Set Word Failed',
       data: null,
     }));
 
@@ -107,24 +108,61 @@ const setWord = async (req, res, next) => {
           transaction,
         },
       );
-    } else {
-      result = await Kata.create(
-        {
-          ...word.data,
-          userId: id,
-          audioUrl: url,
-        },
-        {
-          transaction,
-        },
-      );
+
+      if (!result) {
+        await transaction.rollback();
+        return res.status(400).json({
+          errors: ['Failed Save to Database'],
+          message: 'Set Word Failed',
+          data: null,
+        });
+      }
+
+      await transaction.commit();
+
+      return res.status(200).json({
+        message: 'Success Set Word',
+        data: result,
+      });
     }
+
+    result = await Kata.create(
+      {
+        ...word.data,
+        userId: id,
+        audioUrl: url,
+      },
+      {
+        transaction,
+      },
+    );
 
     if (!result) {
       await transaction.rollback();
       return res.status(400).json({
         errors: ['Gagal simpan di database'],
         message: 'Gagal Set Word',
+        data: null,
+      });
+    }
+
+    const dataKata = {
+      name,
+      kataId: result.id,
+      sasak: result.sasak,
+      indonesia: result.indonesia,
+      contohPenggunaanSasak: result.contohPenggunaanSasak,
+      contohPenggunaanIndo: result.contohPenggunaanIndo,
+      audioUrl: result.audioUrl,
+    };
+
+    const emailSend = await sendMailUploadWordAdmin(dataKata);
+
+    if (!emailSend) {
+      await transaction.rollback();
+      return res.status(400).json({
+        errors: ['Email not sent'],
+        message: 'Set Word Failed',
         data: null,
       });
     }
@@ -313,6 +351,38 @@ const approveWordAdmin = async (req, res, next) => {
 
     await transaction.commit();
 
+    const kataData = await Kata.findOne({
+      attributes: ['id', 'userId', 'sasak', 'indonesia', 'createdAt'],
+      where: {
+        id: kataId,
+      },
+    });
+
+    const userData = await User.findOne({
+      attributes: ['id', 'name', 'email'],
+      where: {
+        id: kataData.userId,
+      },
+    });
+
+    const dataKata = {
+      name: userData.name,
+      kataId,
+      sasak: kataData.sasak,
+      indonesia: kataData.indonesia,
+      createdAt: kataData.createdAt,
+    };
+
+    const sendMail = await sendMailAprovalWord(dataKata, userData.email);
+
+    if (!sendMail) {
+      return res.status(500).json({
+        errors: ['Failed to send email'],
+        message: 'Approve Word success, but failed to send email',
+        data: null,
+      });
+    }
+
     return res.status(200).json({
       errors: [],
       message: 'Approve Word success',
@@ -355,6 +425,38 @@ const declineWordAdmin = async (req, res, next) => {
       });
     }
 
+    const kataData = await Kata.findOne({
+      where: {
+        id: kataId,
+      },
+    });
+
+    if (!kataData) {
+      return res.status(404).json({
+        errors: ['Word not found'],
+        message: 'Decline Word Failed',
+        data: null,
+      });
+    }
+
+    const userData = await User.findOne({
+      attributes: ['id', 'name', 'email'],
+      where: {
+        id: kataData.userId,
+      },
+    });
+
+    const dataKata = {
+      name: userData.name,
+      kataId,
+      sasak: kataData.sasak,
+      indonesia: kataData.indonesia,
+      contohPenggunaanSasak: kataData.contohPenggunaanSasak,
+      contohPenggunaanIndo: kataData.contohPenggunaanIndonesia,
+      audioUrl: kataData.audioUrl,
+      createdAt: kataData.createdAt,
+    };
+
     const result = await Kata.destroy({
       where: {
         id: kataId,
@@ -368,6 +470,17 @@ const declineWordAdmin = async (req, res, next) => {
       return res.status(404).json({
         errors: ['Word not found or status is active'],
         message: 'Declined kata failed',
+        data: null,
+      });
+    }
+
+    const sendMail = await sendMailDeclineWord(dataKata, userData.email);
+
+    if (!sendMail) {
+      await transaction.rollback();
+      return res.status(500).json({
+        errors: ['Failed to send email'],
+        message: 'Approve Word success, but failed to send email',
         data: null,
       });
     }
