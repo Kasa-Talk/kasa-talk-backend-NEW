@@ -1363,3 +1363,239 @@ SyntaxError: missing ) after argument list
     at require (node:internal/modules/cjs/helpers:119:18)
     at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:3:33)
     at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:05:23.427 PM error : uncaughtException: Unexpected token 'const'
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:277
+    const result = await Kata.destroy({
+    ^^^^^
+
+SyntaxError: Unexpected token 'const'
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:3:45)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:21:06.748 PM error : uncaughtException: Unexpected token '}'
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:293
+  }  
+  ^
+
+SyntaxError: Unexpected token '}'
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:26:40.905 PM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:273
+        indonesia: ,
+                   ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:26:45.281 PM error : uncaughtException: Unexpected token '%'
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:273
+        indonesia: %,
+                   ^
+
+SyntaxError: Unexpected token '%'
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:26:47.051 PM error : uncaughtException: Unexpected token '%'
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:273
+        indonesia: %{word%},
+                   ^
+
+SyntaxError: Unexpected token '%'
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:26:50.778 PM error : uncaughtException: Unexpected token '%'
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:273
+        indonesia: {word%},
+                        ^
+
+SyntaxError: Unexpected token '%'
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:26:59.437 PM error : uncaughtException: Unexpected token '%'
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:273
+        indonesia: {%word%},
+                    ^
+
+SyntaxError: Unexpected token '%'
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:27:04.629 PM error : uncaughtException: Unexpected token '%'
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:273
+        indonesia: %word%},
+                   ^
+
+SyntaxError: Unexpected token '%'
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:27:12.037 PM error : uncaughtException: Unexpected token '%'
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:273
+        indonesia: %word%,
+                   ^
+
+SyntaxError: Unexpected token '%'
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:27:16.513 PM error : uncaughtException: Unexpected token ','
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:273
+        indonesia: word%,
+                        ^
+
+SyntaxError: Unexpected token ','
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:29:04.021 PM error : uncaughtException: Missing initializer in destructuring declaration
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:2
+const { Op }
+      ^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:29:07.368 PM error : uncaughtException: reque is not defined
+ReferenceError: reque is not defined
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:2:16)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+ [LOGGER] 2023-12-06 06:33:34.444 PM error : uncaughtException: Unexpected token 'return'
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:291
+    return res.status(200).json({
+    ^^^^^^
+
+SyntaxError: Unexpected token 'return'
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:54:47.138 PM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:281
+    if (indo === 'true) {
+                 ^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-06 06:54:51.704 PM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/word.controller.js:291
+    } else if (indo === 'false) {
+                        ^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/word.route.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)

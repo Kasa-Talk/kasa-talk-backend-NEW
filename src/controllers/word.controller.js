@@ -1,4 +1,5 @@
 const { v4: uuid } = require('uuid');
+const { Op } = require('sequelize');
 const { promisify } = require('util');
 const { User, Kata, sequelize } = require('../models');
 const { getUserIdFromAccessToken } = require('../utils/jwt');
@@ -172,7 +173,17 @@ const getAllWord = async (req, res, next) => {
     if (req.query.status === 'pending') {
       result = await Kata.findAll(
         {
-          attributes: ['id', 'indonesia', 'sasak', 'audioUrl', 'contohPenggunaanIndo', 'contohPenggunaanSasak', 'status', 'createdAt', 'userId'],
+          attributes: [
+            'id',
+            'indonesia',
+            'sasak',
+            'audioUrl',
+            'contohPenggunaanIndo',
+            'contohPenggunaanSasak',
+            'status',
+            'createdAt',
+            'userId',
+          ],
           where: {
             status: req.query.status,
           },
@@ -208,7 +219,17 @@ const getAllWord = async (req, res, next) => {
           },
         },
         {
-          attributes: ['id', 'indonesia', 'sasak', 'audioUrl', 'contohPenggunaanIndo', 'contohPenggunaanSasak', 'status', 'createdAt', 'userId'],
+          attributes: [
+            'id',
+            'indonesia',
+            'sasak',
+            'audioUrl',
+            'contohPenggunaanIndo',
+            'contohPenggunaanSasak',
+            'status',
+            'createdAt',
+            'userId',
+          ],
           order: [['createdAt', 'DESC']],
         },
       );
@@ -242,7 +263,116 @@ const getAllWord = async (req, res, next) => {
   }
 };
 
+// eslint-disable-next-line consistent-return
+const translateWord = async (req, res, next) => {
+  try {
+    const word = req.query.search;
+    const indo = req.query.indonesia;
+
+    if (!indo) {
+      return res.status(400).json({
+        errors: ['Set from language is required'],
+        message: 'Translate Word Failed',
+        data: null,
+      });
+    }
+
+    let result;
+    if (indo === 'true') {
+      result = await Kata.findAll({
+        attributes: ['sasak', 'contohPenggunaanSasak', 'contohPenggunaanIndo', 'audioUrl'],
+        where: {
+          indonesia: {
+            [Op.like]: `%${word}%`,
+          },
+        },
+        limit: 10,
+      });
+    } else if (indo === 'false') {
+      result = await Kata.findAll({
+        attributes: ['indonesia', 'contohPenggunaanSasak', 'contohPenggunaanIndo', 'audioUrl'],
+        where: {
+          sasak: {
+            [Op.like]: `%${word}%`,
+          },
+        },
+        limit: 10,
+      });
+    }
+
+    if (!result) {
+      return res.status(404).json({
+        errors: ['Word not found'],
+        message: 'Translate Word Failed',
+        data: null,
+      });
+    }
+
+    if (result.length === 0) {
+      return res.status(404).json({
+        errors: ['Word not found in database'],
+        message: 'Translate Word Success',
+        data: null,
+      });
+    }
+
+    return res.status(200).json({
+      errors: [],
+      message: 'Translate Word Success',
+      data: result,
+    });
+  } catch (error) {
+    next(
+      new Error(`controllers/word.controller.js:translateWord - ${error.message}`),
+    );
+  }
+};
+
+// eslint-disable-next-line consistent-return
+const deleteWord = async (req, res, next) => {
+  const transaction = await sequelize.transaction();
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+    const tokenInfo = getUserIdFromAccessToken(token);
+
+    const userIdGet = tokenInfo.id;
+
+    const result = await Kata.destroy({
+      where: {
+        id: req.params.id,
+        userId: userIdGet,
+      },
+      transaction,
+    });
+
+    if (!result) {
+      await transaction.rollback();
+      return res.status(404).json({
+        errors: ['Word not found'],
+        message: 'Delete Word Failed',
+        data: null,
+      });
+    }
+
+    await transaction.commit();
+
+    return res.status(200).json({
+      errors: [],
+      message: 'Delete Word Success',
+      data: null,
+    });
+  } catch (error) {
+    await transaction.rollback();
+    next(
+      new Error(`controllers/word.controller.js:deleteWord - ${error.message}`),
+    );
+  }
+};
+
 module.exports = {
   setWord,
   getAllWord,
+  deleteWord,
+  translateWord,
 };
