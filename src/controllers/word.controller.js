@@ -501,6 +501,42 @@ const declineWordAdmin = async (req, res, next) => {
 };
 
 // eslint-disable-next-line consistent-return
+const getAllUserWord = async (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+    const tokenInfo = getUserIdFromAccessToken(token);
+    const { id } = tokenInfo;
+
+    const kataUser = await Kata.findAll({
+      attributes: ['id', 'sasak', 'indonesia', 'contohPenggunaanSasak', 'contohPenggunaanIndo', 'audioUrl', 'createdAt'],
+      where: {
+        userId: id,
+      },
+      order: [['createdAt', 'DESC']],
+    });
+
+    if (!kataUser) {
+      return res.status(404).json({
+        errors: ['User not have word'],
+        message: 'Get User Word Failed',
+        data: null,
+      });
+    }
+
+    return res.status(200).json({
+      errors: [],
+      message: 'Get User Word Success',
+      data: kataUser,
+    });
+  } catch (error) {
+    next(
+      new Error(`controllers/word.controller.js:getAllUserWord - ${error.message}`),
+    );
+  }
+};
+
+// eslint-disable-next-line consistent-return
 const translateWord = async (req, res, next) => {
   try {
     const word = req.query.search;
@@ -612,6 +648,7 @@ module.exports = {
   getAllWord,
   approveWordAdmin,
   declineWordAdmin,
+  getAllUserWord,
   deleteWord,
   translateWord,
 };
