@@ -1,4 +1,5 @@
 const { Model } = require('sequelize');
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = (sequelize, DataTypes) => {
   class Kata extends Model {
@@ -17,8 +18,12 @@ module.exports = (sequelize, DataTypes) => {
       indonesia: DataTypes.STRING,
       sasak: DataTypes.STRING,
       audioUrl: DataTypes.STRING,
-      contohPenggunaan: DataTypes.STRING,
-      userId: DataTypes.UUID,
+      contohPenggunaanIndo: DataTypes.STRING,
+      contohPenggunaanSasak: DataTypes.STRING,
+      userId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+      },
       status: {
         type: DataTypes.ENUM('active', 'inactive', 'pending'),
         allowNull: false,

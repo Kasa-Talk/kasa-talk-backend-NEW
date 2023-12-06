@@ -22,7 +22,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      contohPenggunaan: {
+      contohPenggunaanIndo: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      contohPenggunaanSasak: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -31,6 +35,10 @@ module.exports = {
         allowNull: false,
         values: ['active', 'inactive', 'pending'],
         defaultValue: 'pending',
+      },
+      userId: {
+        type: Sequelize.UUID,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -42,6 +50,7 @@ module.exports = {
       },
     });
   },
+  // eslint-disable-next-line no-unused-vars
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Kata');
   },

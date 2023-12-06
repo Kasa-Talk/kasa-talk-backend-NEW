@@ -1,6 +1,5 @@
 const { Model } = require('sequelize');
 const { v4: uuidv4 } = require('uuid');
-const moment = require('moment');
 const { encrypt } = require('../utils/bcrypt');
 require('dotenv').config();
 

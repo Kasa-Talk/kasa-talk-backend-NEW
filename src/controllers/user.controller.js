@@ -563,6 +563,15 @@ const updateAvatarUser = async (req, res, next) => {
       });
     }
 
+    const allowedImageFormats = ['image/jpeg', 'image/jpg', 'image/png'];
+    if (!allowedImageFormats.includes(req.file.mimetype)) {
+      return res.status(400).json({
+        errors: ['Invalid file format. Only JPEG, JPG, and PNG images are allowed.'],
+        message: 'Update Avatar Failed',
+        data: null,
+      });
+    }
+
     const folderName = 'avatar';
     const fileName = `${uuid()}-${req.file.originalname}`;
     const filePath = `${folderName}/${fileName}`;

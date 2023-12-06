@@ -1,8 +1,6 @@
 const jsonWebToken = require('jsonwebtoken');
 require('dotenv').config();
 
-console.log(process.env.JWT_SECRET);
-
 const generateAccessToken = (user) => jsonWebToken.sign(user, process.env.JWT_SECRET, {
   expiresIn: process.env.JWT_EXPIRES_IN || '3600s',
 });

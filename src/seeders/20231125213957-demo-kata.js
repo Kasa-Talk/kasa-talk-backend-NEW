@@ -1,3 +1,5 @@
+const { v4: uuidv4 } = require('uuid');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -10,7 +12,9 @@ module.exports = {
       indonesia: 'test',
       sasak: 'test',
       audioUrl: 'test',
-      contohPenggunaan: 'test',
+      contohPenggunaanIndo: 'test',
+      contohPenggunaanSasak: 'test',
+      userId: uuidv4(),
       // status: 'pending',
       createdAt: new Date(),
       updatedAt: new Date(),
