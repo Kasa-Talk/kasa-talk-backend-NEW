@@ -111,6 +111,7 @@ const setWord = async (req, res, next) => {
       result = await Kata.create(
         {
           ...word.data,
+          userId: id,
           audioUrl: url,
         },
         {
@@ -264,6 +265,129 @@ const getAllWord = async (req, res, next) => {
 };
 
 // eslint-disable-next-line consistent-return
+const approveWordAdmin = async (req, res, next) => {
+  const transaction = await sequelize.transaction();
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+    const tokenInfo = getUserIdFromAccessToken(token);
+    const { id, role } = tokenInfo;
+
+    const kataId = req.params.id;
+
+    if (role !== 'admin') {
+      return res.status(401).json({
+        errors: ['Unauthorized, Admin only'],
+        message: 'Approve Word Failed',
+        data: null,
+      });
+    }
+
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      return res.status(404).json({
+        errors: ['Admin not found'],
+        message: 'Approve Word Failed',
+        data: null,
+      });
+    }
+
+    const result = await Kata.update({
+      status: 'active',
+    }, {
+      where: {
+        id: kataId,
+      },
+      transaction,
+    });
+
+    if (!result) {
+      await transaction.rollback();
+      return res.status(404).json({
+        errors: ['Word not found or already approved'],
+        message: 'Approve Word failed',
+        data: null,
+      });
+    }
+
+    await transaction.commit();
+
+    return res.status(200).json({
+      errors: [],
+      message: 'Approve Word success',
+      data: null,
+    });
+  } catch (error) {
+    await transaction.rollback();
+    next(
+      new Error(`controllers/word.controller.js:approveWordAdmin - ${error.message}`),
+    );
+  }
+};
+
+// eslint-disable-next-line consistent-return
+const declineWordAdmin = async (req, res, next) => {
+  const transaction = await sequelize.transaction();
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+    const tokenInfo = getUserIdFromAccessToken(token);
+    const { id, role } = tokenInfo;
+
+    const kataId = req.params.id;
+
+    if (role !== 'admin') {
+      return res.status(401).json({
+        errors: ['Unauthorized, Admin only'],
+        message: 'Decline Word Failed',
+        data: null,
+      });
+    }
+
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      return res.status(404).json({
+        errors: ['Admin not found'],
+        message: 'Decline Word Failed',
+        data: null,
+      });
+    }
+
+    const result = await Kata.destroy({
+      where: {
+        id: kataId,
+        status: 'pending',
+      },
+      transaction,
+    });
+
+    if (!result) {
+      await transaction.rollback();
+      return res.status(404).json({
+        errors: ['Word not found or status is active'],
+        message: 'Declined kata failed',
+        data: null,
+      });
+    }
+
+    await transaction.commit();
+
+    return res.status(200).json({
+      errors: [],
+      message: 'Decline word success',
+      data: null,
+    });
+  } catch (error) {
+    await transaction.rollback();
+    next(
+      new Error(`controllers/word.controller.js:declineWordAdmin - ${error.message}`),
+    );
+  }
+};
+
+// eslint-disable-next-line consistent-return
 const translateWord = async (req, res, next) => {
   try {
     const word = req.query.search;
@@ -280,7 +404,7 @@ const translateWord = async (req, res, next) => {
     let result;
     if (indo === 'true') {
       result = await Kata.findAll({
-        attributes: ['sasak', 'contohPenggunaanSasak', 'contohPenggunaanIndo', 'audioUrl'],
+        attributes: ['sasak', 'indonesia', 'contohPenggunaanSasak', 'contohPenggunaanIndo', 'audioUrl'],
         where: {
           indonesia: {
             [Op.like]: `%${word}%`,
@@ -290,7 +414,7 @@ const translateWord = async (req, res, next) => {
       });
     } else if (indo === 'false') {
       result = await Kata.findAll({
-        attributes: ['indonesia', 'contohPenggunaanSasak', 'contohPenggunaanIndo', 'audioUrl'],
+        attributes: ['indonesia', 'sasak', 'contohPenggunaanSasak', 'contohPenggunaanIndo', 'audioUrl'],
         where: {
           sasak: {
             [Op.like]: `%${word}%`,
@@ -373,6 +497,8 @@ const deleteWord = async (req, res, next) => {
 module.exports = {
   setWord,
   getAllWord,
+  approveWordAdmin,
+  declineWordAdmin,
   deleteWord,
   translateWord,
 };
