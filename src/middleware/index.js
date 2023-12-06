@@ -7,10 +7,10 @@ const appMiddleware = express();
 
 appMiddleware.use(
   cors({
-    origin: true,
+    origin: '*',
     credentials: true,
     preflightContinue: false,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    methods: ['GET,HEAD,PUT,PATCH,POST,DELETE'],
   }),
 );
 

@@ -232,6 +232,8 @@ const getUserById = async (req, res, next) => {
 
     const { id } = tokenInfo;
 
+    console.log(tokenInfo);
+
     const user = await User.findOne({
       where: {
         id,

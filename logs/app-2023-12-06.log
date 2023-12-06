@@ -353,3 +353,19 @@ ReferenceError: wordRouter is not defined
     at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
  [LOGGER] 2023-12-06 12:42:49.707 PM error : controllers/word.controller.js:setWord - Operation timeout
  [LOGGER] 2023-12-06 12:46:25.444 PM error : controllers/word.controller.js:setWord - Unknown column 'userId' in 'field list'
+ [LOGGER] 2023-12-06 01:42:20.618 PM error : uncaughtException: Unexpected token ')'
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:235
+    console.log(tokenInfo.);
+                          ^
+
+SyntaxError: Unexpected token ')'
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/routes/user.route.js:12:5)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)

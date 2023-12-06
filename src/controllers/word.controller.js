@@ -19,7 +19,7 @@ const setWord = async (req, res, next) => {
     const token = authHeader && authHeader.split(' ')[1];
     const tokenInfo = getUserIdFromAccessToken(token);
 
-    const { id } = tokenInfo;
+    const { id, role } = tokenInfo;
 
     const user = await User.findByPk(id);
 
@@ -91,16 +91,30 @@ const setWord = async (req, res, next) => {
 
     await blobStreamEnd(req.file.buffer);
 
-    const result = await Kata.create(
-      {
-        ...word.data,
-        userId: id,
-        audioUrl: url,
-      },
-      {
-        transaction,
-      },
-    );
+    let result;
+    if (role === 'admin') {
+      result = await Kata.create(
+        {
+          ...word.data,
+          userId: id,
+          audioUrl: url,
+          status: 'active',
+        },
+        {
+          transaction,
+        },
+      );
+    } else {
+      result = await Kata.create(
+        {
+          ...word.data,
+          audioUrl: url,
+        },
+        {
+          transaction,
+        },
+      );
+    }
 
     if (!result) {
       await transaction.rollback();

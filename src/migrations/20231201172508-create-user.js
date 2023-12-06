@@ -1,4 +1,3 @@
-const moment = require('moment');
 const { v4: uuidv4 } = require('uuid');
 const { encrypt } = require('../utils/bcrypt');
 require('dotenv').config();
