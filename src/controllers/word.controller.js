@@ -84,7 +84,9 @@ const setWord = async (req, res, next) => {
 
     let url;
     blobStream.on('finish', async () => {
-      url = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURIComponent(filePath)}?alt=media`;
+      url = `https://firebasestorage.googleapis.com/v0/b/${
+        bucket.name
+      }/o/${encodeURIComponent(filePath)}?alt=media`;
     });
 
     const blobStreamEnd = promisify(blobStream.end).bind(blobStream);
@@ -139,6 +141,108 @@ const setWord = async (req, res, next) => {
   }
 };
 
+// eslint-disable-next-line consistent-return
+const getAllWord = async (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+    const tokenInfo = getUserIdFromAccessToken(token);
+
+    const { id, role } = tokenInfo;
+
+    if (role !== 'admin') {
+      return res.status(401).json({
+        errors: ['Unauthorized, Admin only'],
+        message: 'Get All Word Failed',
+        data: null,
+      });
+    }
+
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      return res.status(404).json({
+        errors: ['Admin not found'],
+        message: 'Get All Word Failed',
+        data: null,
+      });
+    }
+
+    let result;
+    if (req.query.status === 'pending') {
+      result = await Kata.findAll(
+        {
+          attributes: ['id', 'indonesia', 'sasak', 'audioUrl', 'contohPenggunaanIndo', 'contohPenggunaanSasak', 'status', 'createdAt', 'userId'],
+          where: {
+            status: req.query.status,
+          },
+        },
+        {
+          order: [['createdAt', 'DESC']],
+        },
+      );
+
+      // Fetch user data for each word and replace userId with user object
+      result = await Promise.all(
+        result.map(async (data) => {
+          const userData = await User.findByPk(data.userId);
+          return {
+            id: data.id,
+            indonesia: data.indonesia,
+            sasak: data.sasak,
+            audioUrl: data.audioUrl,
+            contohPenggunaanIndo: data.contohPenggunaanIndo,
+            contohPenggunaanSasak: data.contohPenggunaanSasak,
+            status: data.status,
+            createdAt: data.createdAt,
+            name: userData.name,
+            avatarUrl: userData.avatarUrl,
+          };
+        }),
+      );
+    } else if (req.query.status === 'active') {
+      result = await Kata.findAll(
+        {
+          where: {
+            status: req.query.status,
+          },
+        },
+        {
+          attributes: ['id', 'indonesia', 'sasak', 'audioUrl', 'contohPenggunaanIndo', 'contohPenggunaanSasak', 'status', 'createdAt', 'userId'],
+          order: [['createdAt', 'DESC']],
+        },
+      );
+
+      // Fetch user data for each word and replace userId with user object
+      result = await Promise.all(
+        result.map(async (data) => ({
+          id: data.id,
+          indonesia: data.indonesia,
+          sasak: data.sasak,
+          audioUrl: data.audioUrl,
+          contohPenggunaanIndo: data.contohPenggunaanIndo,
+          contohPenggunaanSasak: data.contohPenggunaanSasak,
+          status: data.status,
+          createdAt: data.createdAt,
+        })),
+      );
+    }
+
+    return res.status(200).json({
+      errors: [],
+      message: 'Get All Word Success',
+      data: {
+        result,
+      },
+    });
+  } catch (error) {
+    next(
+      new Error(`controllers/word.controller.js:getAllWord - ${error.message}`),
+    );
+  }
+};
+
 module.exports = {
   setWord,
+  getAllWord,
 };
