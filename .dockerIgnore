@@ -1,4 +1,3 @@
-node_modules/
-Docker
-.env
-.dockerignore
+node_modules
+kasa-talk-storage-firebase-adminsdk-i5qka-a07fb905ba.json
+
