@@ -498,3 +498,416 @@ ReferenceError: getAll is not defined
     at Module._compile (node:internal/modules/cjs/loader:1256:14)
     at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
  [LOGGER] 2023-12-07 01:33:45.481 AM error : controllers/word.controller.js:getAllUserWord - Unknown column 'contohPenggunaanIndonesia' in 'field list'
+ [LOGGER] 2023-12-07 10:01:20.889 AM error : uncaughtException: Failed to parse private key: Error: Invalid PEM formatted message.
+Error: Failed to parse private key: Error: Invalid PEM formatted message.
+    at new ServiceAccount (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:153:19)
+    at new ServiceAccountCredential (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:70:15)
+    at Object.cert (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-factory.js:103:54)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:22:32)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-07 10:02:43.172 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:5
+  "type: process.env.type,
+  ^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:02:44.427 AM error : uncaughtException: Failed to parse private key: Error: Invalid PEM formatted message.
+Error: Failed to parse private key: Error: Invalid PEM formatted message.
+    at new ServiceAccount (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:153:19)
+    at new ServiceAccountCredential (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:70:15)
+    at Object.cert (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-factory.js:103:54)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:22:32)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-07 10:02:48.180 AM error : uncaughtException: Unexpected end of input
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:27
+
+
+
+SyntaxError: Unexpected end of input
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:02:51.524 AM error : uncaughtException: Failed to parse private key: Error: Invalid PEM formatted message.
+Error: Failed to parse private key: Error: Invalid PEM formatted message.
+    at new ServiceAccount (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:153:19)
+    at new ServiceAccountCredential (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:70:15)
+    at Object.cert (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-factory.js:103:54)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:22:32)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-07 10:02:59.105 AM error : uncaughtException: Failed to parse private key: Error: Invalid PEM formatted message.
+Error: Failed to parse private key: Error: Invalid PEM formatted message.
+    at new ServiceAccount (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:153:19)
+    at new ServiceAccountCredential (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:70:15)
+    at Object.cert (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-factory.js:103:54)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:22:32)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-07 10:03:11.961 AM error : uncaughtException: Failed to parse private key: Error: Invalid PEM formatted message.
+Error: Failed to parse private key: Error: Invalid PEM formatted message.
+    at new ServiceAccount (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:153:19)
+    at new ServiceAccountCredential (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:70:15)
+    at Object.cert (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-factory.js:103:54)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:22:32)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-07 10:03:17.038 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:6
+  project_id: 'process.env.project_id,
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:18.895 AM error : uncaughtException: Failed to parse private key: Error: Invalid PEM formatted message.
+Error: Failed to parse private key: Error: Invalid PEM formatted message.
+    at new ServiceAccount (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:153:19)
+    at new ServiceAccountCredential (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:70:15)
+    at Object.cert (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-factory.js:103:54)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:22:32)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-07 10:03:20.889 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:7
+  private_key_id: process.env.private_key_id',
+                                            ^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:22.793 AM error : uncaughtException: Failed to parse private key: Error: Invalid PEM formatted message.
+Error: Failed to parse private key: Error: Invalid PEM formatted message.
+    at new ServiceAccount (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:153:19)
+    at new ServiceAccountCredential (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:70:15)
+    at Object.cert (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-factory.js:103:54)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:22:32)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-07 10:03:24.441 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:8
+  private_key: 'process.env.private_key,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:26.236 AM error : uncaughtException: Failed to parse private key: Error: Invalid PEM formatted message.
+Error: Failed to parse private key: Error: Invalid PEM formatted message.
+    at new ServiceAccount (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:153:19)
+    at new ServiceAccountCredential (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:70:15)
+    at Object.cert (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-factory.js:103:54)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:22:32)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-07 10:03:27.670 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:9
+  client_email: process.env.client_email',
+                                        ^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:29.144 AM error : uncaughtException: Failed to parse private key: Error: Invalid PEM formatted message.
+Error: Failed to parse private key: Error: Invalid PEM formatted message.
+    at new ServiceAccount (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:153:19)
+    at new ServiceAccountCredential (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:70:15)
+    at Object.cert (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-factory.js:103:54)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:22:32)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-07 10:03:30.499 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:10
+  client_id: 'process.env.client_id,
+             ^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:31.547 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:10
+  client_id: 'process.env.client_id,
+             ^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:32.804 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:10
+  client_id: 'process.env.client_id,
+             ^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:34.526 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:10
+  client_id: 'process.env.client_id,
+             ^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:35.739 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:10
+  client_id: 'process.env.client_id,
+             ^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:37.378 AM error : uncaughtException: Failed to parse private key: Error: Invalid PEM formatted message.
+Error: Failed to parse private key: Error: Invalid PEM formatted message.
+    at new ServiceAccount (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:153:19)
+    at new ServiceAccountCredential (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:70:15)
+    at Object.cert (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-factory.js:103:54)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:22:32)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-07 10:03:39.190 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:13
+  auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url',
+                                                                      ^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:40.869 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:13
+  auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url',
+                                                                      ^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:42.265 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:13
+  auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url',
+                                                                      ^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:44.201 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:13
+  auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url',
+                                                                      ^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:45.927 AM error : uncaughtException: Invalid or unexpected token
+/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:13
+  auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url',
+                                                                      ^^
+
+SyntaxError: Invalid or unexpected token
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1178:20)
+    at Module._compile (node:internal/modules/cjs/loader:1220:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/middleware/multer.js:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+ [LOGGER] 2023-12-07 10:03:47.229 AM error : uncaughtException: Failed to parse private key: Error: Invalid PEM formatted message.
+Error: Failed to parse private key: Error: Invalid PEM formatted message.
+    at new ServiceAccount (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:153:19)
+    at new ServiceAccountCredential (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:70:15)
+    at Object.cert (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-factory.js:103:54)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:22:32)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-07 10:03:59.240 AM error : uncaughtException: Failed to parse private key: Error: Invalid PEM formatted message.
+Error: Failed to parse private key: Error: Invalid PEM formatted message.
+    at new ServiceAccount (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:153:19)
+    at new ServiceAccountCredential (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:70:15)
+    at Object.cert (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-factory.js:103:54)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:22:32)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-07 10:04:03.206 AM error : uncaughtException: Failed to parse private key: Error: Invalid PEM formatted message.
+Error: Failed to parse private key: Error: Invalid PEM formatted message.
+    at new ServiceAccount (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:153:19)
+    at new ServiceAccountCredential (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-internal.js:70:15)
+    at Object.cert (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/firebase-admin/lib/app/credential-factory.js:103:54)
+    at Object.<anonymous> (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/config/firebase.config.js:22:32)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+ [LOGGER] 2023-12-07 10:09:52.579 AM error : controllers/word.controller.js:setWord - target: rinjani_visitor_db.-.primary: vttablet: Table 'rinjani_visitor_db.Kata' doesn't exist (errno 1146) (sqlstate 42S02) (CallerID: qn25jh1qvuovabbz1skm): Sql: "insert into Kata(id, indonesia, sasak, audioUrl, contohPenggunaanIndo, contohPenggunaanSasak, userId, `status`, createdAt, updatedAt) values (default, :v1, :v2, :v3, :v4, :v5, :v6, :v7, :v8, :v9)", BindVars: {REDACTED}

@@ -8,7 +8,7 @@ module.exports = {
      *
      * Example:
      * */
-    await queryInterface.bulkInsert('kata', [{
+    await queryInterface.bulkInsert('Kata', [{
       indonesia: 'test',
       sasak: 'test',
       audioUrl: 'test',
