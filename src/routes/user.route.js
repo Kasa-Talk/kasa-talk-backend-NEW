@@ -8,6 +8,7 @@ const {
   setRefreshToken,
   updateUser,
   forgotPassword,
+  removeUserAccount,
 } = require('../controllers/user.controller');
 const { autenticate } = require('../controllers/auth-Error.controller');
 
@@ -32,6 +33,8 @@ userRouter.get('/admin/refresh', setRefreshToken); // admin only
 userRouter.patch('/users', autenticate, updateUser);
 
 userRouter.post('/users/forgot-password', forgotPassword);
+
+userRouter.delete('/users', autenticate, removeUserAccount);
 
 // userRouter.post('/users/avatar', autenticate, upload.single('avatar'), updateAvatarUser);
 

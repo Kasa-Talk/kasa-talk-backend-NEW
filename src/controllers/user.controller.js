@@ -642,6 +642,61 @@ const updateAvatarUser = async (req, res, next) => {
   }
 };
 
+// eslint-disable-next-line consistent-return
+const removeUserAccount = async (req, res, next) => {
+  const transaction = await sequelize.transaction();
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+    const tokenInfo = getUserIdFromAccessToken(token);
+    const { id } = tokenInfo;
+
+    const user = await User.findOne({
+      where: {
+        id,
+      },
+    });
+
+    if (!user) {
+      return res.status(404).json({
+        errors: ['User not found'],
+        message: 'Remove User Account Failed',
+        data: null,
+      });
+    }
+
+    const result = await User.destroy({
+      where: {
+        id,
+      },
+    });
+
+    if (!result) {
+      await transaction.rollback();
+      return res.status(400).json({
+        errors: ['User not found'],
+        message: 'Remove User Account Failed',
+        data: null,
+      });
+    }
+
+    await transaction.commit();
+
+    return res.status(200).json({
+      errors: [],
+      message: 'Remove User Account Success',
+      data: null,
+    });
+  } catch (error) {
+    await transaction.rollback();
+    next(
+      new Error(
+        `controllers/userController.js:removeUserAccount - ${error.message}`,
+      ),
+    );
+  }
+};
+
 module.exports = {
   setUser,
   setActivateUser,
@@ -652,4 +707,5 @@ module.exports = {
   updateUser,
   forgotPassword,
   updateAvatarUser,
+  removeUserAccount,
 };

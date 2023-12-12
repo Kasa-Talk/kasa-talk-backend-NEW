@@ -1062,3 +1062,14 @@ Require stack:
     at Module.load (node:internal/modules/cjs/loader:1119:32)
     at Module._load (node:internal/modules/cjs/loader:960:12)
     at Module.require (node:internal/modules/cjs/loader:1143:19)
+ [LOGGER] 2023-12-12 10:22:26.665 PM error : controllers/user.controller.js:setUser - connect ECONNREFUSED 172.253.118.109:465
+ [LOGGER] 2023-12-12 10:22:26.680 PM error : uncaughtException: Cannot set headers after they are sent to the client
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.setHeader (node:_http_outgoing:648:11)
+    at ServerResponse.header (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/express/lib/response.js:794:10)
+    at ServerResponse.send (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/express/lib/response.js:174:12)
+    at ServerResponse.json (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/node_modules/express/lib/response.js:278:15)
+    at setUser (/Users/muh.firdaus/Documents/Daus/SIB Dicoding/Capstone/kasa-talk-api-v1/src/controllers/user.controller.js:150:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ [LOGGER] 2023-12-12 10:57:46.723 PM error : controllers/userController.js:forgotPassword - connect ECONNREFUSED 172.217.194.109:465

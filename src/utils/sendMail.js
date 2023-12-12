@@ -36,7 +36,7 @@ const createEmail = (email, token) => ({
 });
 
 const forgotPassword = (email, password) => ({
-  from: process.env.MAIL_FROM,
+  from: 'kasatalk@gmail.com',
   to: email,
   subject: 'Password Reset Confirmation',
   html: `
