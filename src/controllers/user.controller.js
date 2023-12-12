@@ -415,12 +415,6 @@ const updateUser = async (req, res, next) => {
       valid.password = 'required,isStrongPassword';
       valid.confirmPassword = 'required';
     }
-    if (isExists(req.body.country)) {
-      valid.country = 'required';
-    }
-    if (isExists(req.body.phoneNumber)) {
-      valid.phoneNumber = 'required';
-    }
     const user = await dataValid(valid, req.body);
     if (
       isExists(user.data.password)
@@ -435,16 +429,21 @@ const updateUser = async (req, res, next) => {
         data: null,
       });
     }
-    const result = await User.update(
-      {
-        ...user.data,
+
+    const updateData = {
+      ...user.data,
+    };
+
+    if (isExists(req.body.avatarUrl)) {
+      updateData.avatarUrl = req.body.avatarUrl;
+    }
+
+    const result = await User.update(updateData, {
+      where: {
+        id,
       },
-      {
-        where: {
-          id,
-        },
-      },
-    );
+    });
+
     if (result[0] === 0) {
       return res.status(404).json({
         errors: ['User not found'],
@@ -455,7 +454,7 @@ const updateUser = async (req, res, next) => {
     return res.status(200).json({
       errors: [],
       message: 'User updated successfully',
-      data: user.data,
+      data: null,
     });
   } catch (error) {
     next(
