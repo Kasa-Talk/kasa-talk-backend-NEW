@@ -8,10 +8,8 @@ const {
   setRefreshToken,
   updateUser,
   forgotPassword,
-  updateAvatarUser,
 } = require('../controllers/user.controller');
 const { autenticate } = require('../controllers/auth-Error.controller');
-const { upload } = require('../middleware/multer');
 
 const userRouter = express.Router();
 
@@ -35,6 +33,6 @@ userRouter.patch('/users', autenticate, updateUser);
 
 userRouter.post('/users/forgot-password', forgotPassword);
 
-userRouter.post('/users/avatar', autenticate, upload.single('avatar'), updateAvatarUser);
+// userRouter.post('/users/avatar', autenticate, upload.single('avatar'), updateAvatarUser);
 
 module.exports = userRouter;
