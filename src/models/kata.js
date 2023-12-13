@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       indonesia: DataTypes.STRING,
       sasak: DataTypes.STRING,
-      audioUrl: DataTypes.STRING,
+      audioUrl: DataTypes.TEXT,
       contohPenggunaanIndo: DataTypes.STRING,
       contohPenggunaanSasak: DataTypes.STRING,
       userId: {

@@ -36,7 +36,7 @@ const createEmail = (email, token) => ({
 });
 
 const forgotPassword = (email, password) => ({
-  from: 'kasatalk@gmail.com',
+  from: process.env.MAIL_FROM,
   to: email,
   subject: 'Password Reset Confirmation',
   html: `
@@ -167,6 +167,30 @@ const createDeclineEmail = (kataDetails, email) => {
   };
 };
 
+const createMessage = (email, name, subject, message) => ({
+  from: email,
+  to: process.env.MAIL_USER,
+  subject: `${subject} - Kasa Talk`,
+  html: `
+      <div style="font-family: 'Arial', sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #D61F3B;">${subject}</h2>
+        <p>Hi admin, you have a new message from <strong>${name}</strong> <i>(${email})</i></p>
+
+        <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 20px;">
+          <table style="width: 100%;">
+            <tr>
+              <td>${message}</td>
+            </tr>
+          </table>
+        </div>
+
+        <p style="margin-top: 20px;">If you have any questions or need assistance, feel free to contact us.</p>
+
+        <p style="margin-top: 40px; color: #888;">Best Regards,<br>Kasa Talk</p>
+      </div>
+    `,
+});
+
 const sendMail = (email, token) => new Promise((resolve, reject) => {
   transporter.sendMail(createEmail(email, token), (err, info) => {
     if (err) {
@@ -227,10 +251,23 @@ const sendMailDeclineWord = (kataDetails, email) => new Promise((resolve, reject
   });
 });
 
+const sendMailMessage = (email, name, subject, message) => new Promise((resolve, reject) => {
+  transporter.sendMail(createMessage(email, name, subject, message), (err, info) => {
+    if (err) {
+      console.error('Error sending email:', err);
+      reject(err);
+    } else {
+      console.log(`Email sent (sendMail): ${info.response}`);
+      resolve(true);
+    }
+  });
+});
+
 module.exports = {
   sendMail,
   sendPassword,
   sendMailUploadWordAdmin,
   sendMailAprovalWord,
   sendMailDeclineWord,
+  sendMailMessage,
 };

@@ -4,7 +4,7 @@ const { v4: uuid } = require('uuid');
 const { promisify } = require('util');
 const { Entropy, charset32 } = require('entropy-string');
 const { dataValid } = require('../validation/dataValidation');
-const { sendMail, sendPassword } = require('../utils/sendMail');
+const { sendMail, sendPassword, sendMailMessage } = require('../utils/sendMail');
 const { User, Kata, sequelize } = require('../models');
 const {
   userNotFoundHtml,
@@ -761,6 +761,53 @@ const removeUserAccount = async (req, res, next) => {
   }
 };
 
+// eslint-disable-next-line consistent-return
+const sendMessage = async (req, res, next) => {
+  const valid = {
+    email: 'required, isEmail',
+    name: 'required',
+    subject: 'required',
+    message: 'required',
+  };
+  try {
+    const dataSender = await dataValid(valid, req.body);
+
+    if (dataSender.message.length > 0) {
+      return res.status(400).json({
+        errors: dataSender.message,
+        message: 'Failed Send Message Email',
+        data: null,
+      });
+    }
+
+    const {
+      email, name, subject, message,
+    } = dataSender.data;
+
+    const sendMailVariable = await sendMailMessage(email, name, subject, message);
+
+    if (!sendMailVariable) {
+      return res.status(400).json({
+        errors: ['Failed Send Message Email'],
+        message: 'Failed Send Message Email',
+        data: null,
+      });
+    }
+
+    return res.status(200).json({
+      errors: [],
+      message: 'Success Send Message Email',
+      data: null,
+    });
+  } catch (error) {
+    next(
+      new Error(
+        `controllers/userController.js:sendMessage - ${error.message}`,
+      ),
+    );
+  }
+};
+
 module.exports = {
   setUser,
   setActivateUser,
@@ -772,4 +819,5 @@ module.exports = {
   forgotPassword,
   updateAvatarUser,
   removeUserAccount,
+  sendMessage,
 };

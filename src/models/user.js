@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: false,
       },
       avatarUrl: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         defaultValue: process.env.USER_PROFILE_PICTURE,
       },
       expireTime: {

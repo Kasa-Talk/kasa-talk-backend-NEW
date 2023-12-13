@@ -19,7 +19,7 @@ module.exports = {
         allowNull: false,
       },
       audioUrl: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       contohPenggunaanIndo: {
