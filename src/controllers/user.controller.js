@@ -5,7 +5,7 @@ const { promisify } = require('util');
 const { Entropy, charset32 } = require('entropy-string');
 const { dataValid } = require('../validation/dataValidation');
 const { sendMail, sendPassword } = require('../utils/sendMail');
-const { User, sequelize } = require('../models');
+const { User, Kata, sequelize } = require('../models');
 const {
   userNotFoundHtml,
   userActivatedHtml,
@@ -663,6 +663,70 @@ const removeUserAccount = async (req, res, next) => {
         message: 'Remove User Account Failed',
         data: null,
       });
+    }
+
+    const cekUserKataActive = await Kata.findOne({
+      where: {
+        userId: id,
+        status: 'active',
+      },
+    });
+
+    if (cekUserKataActive) {
+      const adminId = await User.findOne({
+        where: {
+          email: process.env.ADMIN_EMAIL,
+        },
+      });
+
+      const resultKata = await Kata.update(
+        {
+          userId: adminId.id,
+        },
+        {
+          where: {
+            userId: id,
+          },
+          transaction,
+        },
+      );
+
+      if (!resultKata) {
+        await transaction.rollback();
+        return res.status(400).json({
+          errors: ['Kata not update'],
+          message: 'Remove User Account Failed',
+          data: null,
+        });
+      }
+    }
+
+    const cekUserKataPending = await Kata.findOne({
+      where: {
+        userId: id,
+        status: 'pending',
+      },
+    });
+
+    if (cekUserKataPending) {
+      const resultKataPending = await Kata.destroy({
+        where: {
+          userId: id,
+          status: 'pending',
+        },
+        transaction,
+      });
+
+      console.log(resultKataPending);
+
+      if (!resultKataPending) {
+        await transaction.rollback();
+        return res.status(400).json({
+          errors: ['Kata not destroyed'],
+          message: 'Remove User Account Failed',
+          data: null,
+        });
+      }
     }
 
     const result = await User.destroy({
