@@ -26,7 +26,7 @@ const setUser = async (req, res, next) => {
   const valid = {
     name: 'required',
     email: 'required,isEmail',
-    password: 'required,isStrongPassword',
+    password: 'required',
     confirmPassword: 'required',
   };
 
