@@ -483,6 +483,7 @@ const translateWord = async (req, res, next) => {
           indonesia: {
             [Op.like]: `%${word}%`,
           },
+          status: 'active',
         },
         limit: 10,
       });
@@ -493,6 +494,7 @@ const translateWord = async (req, res, next) => {
           sasak: {
             [Op.like]: `%${word}%`,
           },
+          status: 'active',
         },
         limit: 10,
       });

@@ -764,7 +764,7 @@ const removeUserAccount = async (req, res, next) => {
 // eslint-disable-next-line consistent-return
 const sendMessage = async (req, res, next) => {
   const valid = {
-    email: 'required, isEmail',
+    email: 'required,isEmail',
     name: 'required',
     subject: 'required',
     message: 'required',
