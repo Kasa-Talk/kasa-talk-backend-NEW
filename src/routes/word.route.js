@@ -4,7 +4,7 @@ const {
   getAllWord,
   deleteWord,
   translateWord,
-  approveWordAdmin, declineWordAdmin, getAllUserWord, getTopContributor,
+  approveWordAdmin, declineWordAdmin, getAllUserWord, getTopContributor, deleteWordAdmin,
 } = require('../controllers/word.controller');
 const { autenticate } = require('../controllers/auth-Error.controller');
 
@@ -13,6 +13,8 @@ const wordRouter = express.Router();
 wordRouter.post('/kata', autenticate, setWord);
 
 wordRouter.get('/kata/all', autenticate, getAllWord); // admin
+
+wordRouter.delete('/kata/all/:id', autenticate, deleteWordAdmin); // admin
 
 wordRouter.patch('/kata/confirm/:id', autenticate, approveWordAdmin); // admin
 

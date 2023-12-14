@@ -377,7 +377,7 @@ const declineWordAdmin = async (req, res, next) => {
       sasak: kataData.sasak,
       indonesia: kataData.indonesia,
       contohPenggunaanSasak: kataData.contohPenggunaanSasak,
-      contohPenggunaanIndo: kataData.contohPenggunaanIndonesia,
+      contohPenggunaanIndo: kataData.contohPenggunaanIndo,
       audioUrl: kataData.audioUrl,
       createdAt: kataData.createdAt,
     };
@@ -571,6 +571,41 @@ const deleteWord = async (req, res, next) => {
 };
 
 // eslint-disable-next-line consistent-return
+const deleteWordAdmin = async (req, res, next) => {
+  const transaction = await sequelize.transaction();
+  try {
+    const result = await Kata.destroy({
+      where: {
+        id: req.params.id,
+      },
+      transaction,
+    });
+
+    if (!result) {
+      await transaction.rollback();
+      return res.status(404).json({
+        errors: ['Word not found'],
+        message: 'Delete Word Failed',
+        data: null,
+      });
+    }
+
+    await transaction.commit();
+
+    return res.status(200).json({
+      errors: [],
+      message: 'Delete Word Success',
+      data: null,
+    });
+  } catch (error) {
+    await transaction.rollback();
+    next(
+      new Error(`controllers/word.controller.js:deleteWord - ${error.message}`),
+    );
+  }
+};
+
+// eslint-disable-next-line consistent-return
 const getTopContributor = async (req, res, next) => {
   try {
     const limit = req.query.limit || 5;
@@ -624,6 +659,7 @@ module.exports = {
   declineWordAdmin,
   getAllUserWord,
   deleteWord,
+  deleteWordAdmin,
   translateWord,
   getTopContributor,
 };
