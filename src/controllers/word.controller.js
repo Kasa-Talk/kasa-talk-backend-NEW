@@ -2,7 +2,7 @@ const { Op } = require('sequelize');
 const { User, Kata, sequelize } = require('../models');
 const { getUserIdFromAccessToken } = require('../utils/jwt');
 const { dataValid } = require('../validation/dataValidation');
-const { sendMailAprovalWord, sendMailDeclineWord } = require('../utils/sendMail');
+const { sendMailAprovalWord, sendMailDeclineWord, sendMailUploadWordAdmin } = require('../utils/sendMail');
 require('dotenv').config();
 
 // eslint-disable-next-line consistent-return
@@ -93,6 +93,25 @@ const setWord = async (req, res, next) => {
     }
 
     await transaction.commit();
+
+    const mailToAdmin = await sendMailUploadWordAdmin({
+      name: user.name,
+      kataId: result.id,
+      indonesia: result.indonesia,
+      sasak: result.sasak,
+      contohPenggunaanIndo: result.contohPenggunaanIndo,
+      contohPenggunaanSasak: result.contohPenggunaanSasak,
+      audioUrl: result.audioUrl,
+    });
+
+    if (!mailToAdmin) {
+      await transaction.rollback();
+      return res.status(400).json({
+        errors: ['Failed Send Email'],
+        message: 'Success Set Word but Failed Send Email',
+        data: null,
+      });
+    }
 
     return res.status(200).json({
       message: 'Success Set Word',
@@ -611,6 +630,9 @@ const getTopContributor = async (req, res, next) => {
     const limit = req.query.limit || 5;
     const kataContributor = await Kata.findAll({
       attributes: ['userId', [sequelize.fn('COUNT', sequelize.col('userId')), 'count']],
+      where: {
+        status: 'active',
+      },
       group: ['userId'],
     });
 
