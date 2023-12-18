@@ -16,7 +16,6 @@ A Sasak language dictionary website.
 - Look for translations of words from Sasak to Indonesian or Indonesian to Sasak on the "kamus" page
 - You can contribute to add vocabulary that is not yet available after creating account
 
-
 ## How to run it locally?
 
 - #### Clone this repository
@@ -42,3 +41,6 @@ A Sasak language dictionary website.
   ```
 
 - #### Open `http://localhost:PORT` with your browser or request in postman to see the result
+
+## API Specification
+- Go to [kasa-talk-api-spec](https://github.com/Kasa-Talk/kasa-talk-backend-NEW/blob/main/API-Spec.md)
