@@ -169,7 +169,7 @@ const createDeclineEmail = (kataDetails, email) => {
 
 const createMessage = (email, name, subject, message) => ({
   from: email,
-  to: process.env.MAIL_USER,
+  to: process.env.ADMIN_EMAIL,
   subject: `${subject} - Kasa Talk`,
   html: `
       <div style="font-family: 'Arial', sans-serif; max-width: 600px; margin: 0 auto;">

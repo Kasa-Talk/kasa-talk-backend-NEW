@@ -176,25 +176,28 @@ const getAllWord = async (req, res, next) => {
         },
       );
 
-      // Fetch user data for each word and replace userId with user object
-      result = await Promise.all(
-        result.map(async (data) => {
-          const userData = await User.findByPk(data.userId);
-          return {
-            id: data.id,
-            indonesia: data.indonesia,
-            sasak: data.sasak,
-            audioUrl: data.audioUrl,
-            contohPenggunaanIndo: data.contohPenggunaanIndo,
-            contohPenggunaanSasak: data.contohPenggunaanSasak,
-            status: data.status,
-            createdAt: data.createdAt,
-            name: userData.name,
-            avatarUrl: userData.avatarUrl,
-          };
-        }),
-      );
-    } else if (req.query.status === 'active') {
+      const mappedResult = await Promise.all(result.map(async (data) => {
+        const userData = await User.findByPk(data.userId);
+        return {
+          id: data.id,
+          indonesia: data.indonesia,
+          sasak: data.sasak,
+          audioUrl: data.audioUrl,
+          contohPenggunaanIndo: data.contohPenggunaanIndo,
+          contohPenggunaanSasak: data.contohPenggunaanSasak,
+          status: data.status,
+          createdAt: data.createdAt,
+          name: userData ? userData.name : null,
+          avatarUrl: userData ? userData.avatarUrl : null,
+        };
+      }));
+
+      return res.status(200).json({
+        errors: [],
+        message: 'Get All Word Success',
+        data: mappedResult,
+      });
+    } if (req.query.status === 'active') {
       result = await Kata.findAll(
         {
           where: {
